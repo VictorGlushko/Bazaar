@@ -12,27 +12,27 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false, maxLength: 255),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Description = c.String(),
+                        Description = c.String(nullable: false, maxLength: 2048),
                         ReleaseDate = c.DateTime(nullable: false),
-                        Publisher = c.String(),
-                        Developer = c.String(),
-                        Language = c.String(),
+                        Publisher = c.String(nullable: false, maxLength: 255),
+                        Developer = c.String(nullable: false, maxLength: 255),
+                        Language = c.String(nullable: false, maxLength: 255),
                         DateAdded = c.DateTime(nullable: false),
                         Quantity = c.Int(nullable: false),
-                        Image_ImageId = c.Int(),
+                        ImageId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Images", t => t.Image_ImageId)
-                .Index(t => t.Image_ImageId);
+                .ForeignKey("dbo.Images", t => t.ImageId, cascadeDelete: true)
+                .Index(t => t.ImageId);
             
             CreateTable(
                 "dbo.Genres",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(nullable: false, maxLength: 255),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -40,11 +40,11 @@
                 "dbo.Images",
                 c => new
                     {
-                        ImageId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
                         PreviewImagePath = c.String(),
                         MainImagePath = c.String(),
                     })
-                .PrimaryKey(t => t.ImageId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -135,7 +135,7 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Games", "Image_ImageId", "dbo.Images");
+            DropForeignKey("dbo.Games", "ImageId", "dbo.Images");
             DropForeignKey("dbo.GenreGames", "Game_Id", "dbo.Games");
             DropForeignKey("dbo.GenreGames", "Genre_Id", "dbo.Genres");
             DropIndex("dbo.GenreGames", new[] { "Game_Id" });
@@ -146,7 +146,7 @@
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Games", new[] { "Image_ImageId" });
+            DropIndex("dbo.Games", new[] { "ImageId" });
             DropTable("dbo.GenreGames");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

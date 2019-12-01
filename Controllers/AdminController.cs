@@ -13,5 +13,7 @@ namespace Bazaar.Controllers
         {
             return View();
         }
+
+
     }
 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Bazaar.Domain.Entities;
+using Bazaar.EntityConfigurations;
 
 namespace Bazaar.Models
 {
@@ -23,6 +24,8 @@ namespace Bazaar.Models
     {
 
         public DbSet<Game> Games { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -31,6 +34,15 @@ namespace Bazaar.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new GameConfiguration());
+
+            modelBuilder.Configurations.Add(new GenreConfiguration());
+            //modelBuilder.Configurations.Add(new PatientStatusConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

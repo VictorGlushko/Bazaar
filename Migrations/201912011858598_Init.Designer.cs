@@ -13,7 +13,7 @@ namespace Bazaar.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912011307200_Init"; }
+            get { return "201912011858598_Init"; }
         }
         
         string IMigrationMetadata.Source
