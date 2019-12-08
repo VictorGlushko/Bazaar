@@ -10,11 +10,13 @@ namespace Bazaar.Repository
     {
         private readonly ApplicationDbContext _context;
         public IGameRepository Games { get; }
+        public IGenreRepository Genres { get; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Games = new GameRepository(context);
+            Genres = new GenreRepository(context);
         }
 
         public void Complete()

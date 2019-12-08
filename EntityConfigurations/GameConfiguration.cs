@@ -8,10 +8,11 @@ namespace Bazaar.EntityConfigurations
         public GameConfiguration()
         {
             Property(g => g.Name).IsRequired().HasMaxLength(255);
-            Property(g => g.Description).IsRequired().HasMaxLength(2048);
+            Property(g => g.Description).IsRequired().HasMaxLength(4096);
             Property(g => g.Publisher).IsRequired().HasMaxLength(255);
             Property(g => g.Developer).IsRequired().HasMaxLength(255);
             Property(g => g.Language).IsRequired().HasMaxLength(255);
+            Property(g => g.ReleaseDate).IsRequired();
 
 
         }

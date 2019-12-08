@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bazaar.Models;
+using Bazaar.Domain.Entities;
 
 namespace Bazaar.Repository
 {
-    public interface IUnitOfWork
+    public interface IGenreRepository
     {
-        IGameRepository Games { get; }
-        IGenreRepository Genres { get; }
-        void Complete();
-
+        IEnumerable<Genre> GetGenres();
     }
 }
