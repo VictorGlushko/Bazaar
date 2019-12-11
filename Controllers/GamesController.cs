@@ -30,14 +30,16 @@ namespace Bazaar.Controllers
 
             var viewModel = new GameFormViewModel();
             viewModel.Genres = _unitOfWork.Genres.GetGenres();
+            viewModel.Modes = _unitOfWork.Mode.GetModes();
+            viewModel.Platforms = _unitOfWork.Platform.GetPlatforms();
 
             return View(viewModel);
 
         }
 
-        [HttpPost]
+        [HttpPost]                
       
-        public ActionResult Create(Game game)
+        public ActionResult Create(Game game, Genre[] genreitems)
         {
             var viewModel = new GameFormViewModel();
             viewModel.Genres = _unitOfWork.Genres.GetGenres();

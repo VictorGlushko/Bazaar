@@ -7,26 +7,166 @@
 
 <h2>Add new game</h2>
 
-@using (Html.BeginForm("Create","Games"))
+@using (Html.BeginForm("Create", "Games"))
 {
+
+
     <div class="form-group">
-        @Html.LabelFor(m=>m.Name)
-        @Html.TextBoxFor(m=>m.Name,new { @class = "form-control" })
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Name)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m=>m.Price)
-        @Html.TextBoxFor(m=>m.Price,new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Price)
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "5" })
+        @Html.ValidationMessageFor(m => m.Description)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m=>m.Genres)
-        @Html.DropDownListFor(m => m.Genres, new SelectList(Model.Genres, "Id", "Name"), "", new {@class = "form-control"})
-        @Html.ValidationMessageFor(m => m.Genres)
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Price)
     </div>
 
-    <button type="submit" class="btn btn-primary" >Save</button>
+
+    <!-- Trigger the modal with a button -->
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Жанры</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+
+                        @foreach (var item in Model.Genres)
+                        {
+
+                            <a class="ganreitem list-group-item" value="@item.Id">@item.Name</a>
+
+                        }
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Жанры</button>
+        <ul class="ganrelist list-group"></ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="form-group">
+
+
+
+         @Html.LabelFor(m => m.Genres)
+         @Html.DropDownListFor(m => m.Genres, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+         @Html.ValidationMessageFor(m => m.Genres)
+     </div>
+
+      <input type="text" name="Game.Genres[0].Id" value="1" />
+     <input type="text" name="Game.Genres[0].Name" value="NAme" />-->
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Publisher)
+        @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Publisher)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Developer)
+        @Html.TextBoxFor(m => m.Developer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Developer)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Language)
+        @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Language)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Modes)
+        @Html.DropDownListFor(m => m.Modes, new SelectList(Model.Modes, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Modes)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Platforms)
+        @Html.DropDownListFor(m => m.Platforms, new SelectList(Model.Platforms, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Platforms)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="d-flex flex-row">
+        <input type="text" class="form-control" /> <a class="rmv btn btn-danger">-</a>
+    </div>
+
+
+    
+
+    @Html.TextBoxFor(m => m.DateAdded, "{0:dd/mm/yy}", new { @class = "form-control datepicker" })
+
+    <button type="submit" class="rmv btn btn-primary">Save</button>
 }
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("input[name='DateAdded']").datepicker({
+                dateFormat: "dd/M/yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0",
+                dateFormat : "dd.mm.yy",
+                monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+                dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+            });
+
+         
+
+            $(".ganreitem").click(function (event) {
+
+                var id = $(this).attr("value");
+                var name = $(this).text();
+                $(".ganrelist").append("<div class='ganreitem'><input readonly='readonly' class='form-control' type ='text' name = 'Game.Genres[0].Id' value = '" + name + "' /> <span class='remove btn  btn-danger'>Удалить</span></div>");
+
+            });
+
+            $('html').on('click','.remove', function () {                               
+                $(this).parent().remove();    
+            });
+
+        });
+    </script>
+}

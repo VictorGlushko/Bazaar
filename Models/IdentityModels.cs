@@ -26,6 +26,11 @@ namespace Bazaar.Models
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
+        public DbSet<Mode> Modes { get; set; }
+
+        public DbSet<Platform> Platforms { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

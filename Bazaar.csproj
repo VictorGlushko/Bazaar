@@ -199,6 +199,38 @@
     <Compile Include="Migrations\201912072036386_DescriptorLength4096.designer.cs">
       <DependentUpon>201912072036386_DescriptorLength4096.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912081836153_AddTableGameMode.cs" />
+    <Compile Include="Migrations\201912081836153_AddTableGameMode.designer.cs">
+      <DependentUpon>201912081836153_AddTableGameMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081840367_New.cs" />
+    <Compile Include="Migrations\201912081840367_New.designer.cs">
+      <DependentUpon>201912081840367_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081842176_2.cs" />
+    <Compile Include="Migrations\201912081842176_2.designer.cs">
+      <DependentUpon>201912081842176_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081844552_AddModeTable.cs" />
+    <Compile Include="Migrations\201912081844552_AddModeTable.designer.cs">
+      <DependentUpon>201912081844552_AddModeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081847282_RemoveGameMode.cs" />
+    <Compile Include="Migrations\201912081847282_RemoveGameMode.designer.cs">
+      <DependentUpon>201912081847282_RemoveGameMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081858369_AddNewTble.cs" />
+    <Compile Include="Migrations\201912081858369_AddNewTble.designer.cs">
+      <DependentUpon>201912081858369_AddNewTble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912081901518_AddTAgTable.cs" />
+    <Compile Include="Migrations\201912081901518_AddTAgTable.designer.cs">
+      <DependentUpon>201912081901518_AddTAgTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912091924391_AddTablePlatform.cs" />
+    <Compile Include="Migrations\201912091924391_AddTablePlatform.designer.cs">
+      <DependentUpon>201912091924391_AddTablePlatform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -208,7 +240,11 @@
     <Compile Include="Repository\GenreRepository.cs" />
     <Compile Include="Repository\IGameRepository.cs" />
     <Compile Include="Repository\IGenreRepository.cs" />
+    <Compile Include="Repository\IModeRepository.cs" />
+    <Compile Include="Repository\IPlatformRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\ModeRepository.cs" />
+    <Compile Include="Repository\PlatformRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -217,6 +253,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap4.min.css" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\interactive-list.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -224,11 +271,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -300,6 +349,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912072036386_DescriptorLength4096.resx">
       <DependentUpon>201912072036386_DescriptorLength4096.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081836153_AddTableGameMode.resx">
+      <DependentUpon>201912081836153_AddTableGameMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081840367_New.resx">
+      <DependentUpon>201912081840367_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081842176_2.resx">
+      <DependentUpon>201912081842176_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081844552_AddModeTable.resx">
+      <DependentUpon>201912081844552_AddModeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081847282_RemoveGameMode.resx">
+      <DependentUpon>201912081847282_RemoveGameMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081858369_AddNewTble.resx">
+      <DependentUpon>201912081858369_AddNewTble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912081901518_AddTAgTable.resx">
+      <DependentUpon>201912081901518_AddTAgTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091924391_AddTablePlatform.resx">
+      <DependentUpon>201912091924391_AddTablePlatform.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

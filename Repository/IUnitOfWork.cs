@@ -11,6 +11,8 @@ namespace Bazaar.Repository
     {
         IGameRepository Games { get; }
         IGenreRepository Genres { get; }
+        IModeRepository Mode { get;  }
+        IPlatformRepository Platform { get; }
         void Complete();
 
     }
