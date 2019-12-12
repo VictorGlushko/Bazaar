@@ -1,0 +1,27 @@
+﻿.ganrelist {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-icon {
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #28A745;
+}
+
+.btn > .icon {
+    position: relative;
+    left: -.75rem;
+    display: inline-block;
+    padding: .375rem .75rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: .25rem 0 0 .25rem;
+}
+.cont {
+    display: flex;
+    flex-direction: row;
+}
+
+cont>* {
+    border-radius: 0px;
+}

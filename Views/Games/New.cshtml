@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Add new game</h2>
+
+<div class="jumbotron">
+    <h1>Add new game</h1>
+    <p>Just add new game...</p>
+</div>
 
 @using (Html.BeginForm("Create", "Games"))
 {
@@ -13,13 +17,13 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control col" })
         @Html.ValidationMessageFor(m => m.Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Description)
-        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "5" })
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control col", @rows = "5" })
         @Html.ValidationMessageFor(m => m.Description)
     </div>
 
@@ -32,50 +36,37 @@
 
     <!-- Trigger the modal with a button -->
 
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
             <div class="modal-content">
+
+                <!-- Modal Header -->
                 <div class="modal-header">
+                    <h4 class="modal-title">Выберите жанр</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Жанры</h4>
                 </div>
+
+                <!-- Modal body -->
                 <div class="modal-body">
                     <ul class="list-group">
 
                         @foreach (var item in Model.Genres)
                         {
-
                             <a class="ganreitem list-group-item" value="@item.Id">@item.Name</a>
-
                         }
 
                     </ul>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
 
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
         </div>
     </div>
-
-
-    <div class="form-group">
-        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Жанры</button>
-        <ul class="ganrelist list-group"></ul>
-    </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -122,20 +113,29 @@
         @Html.ValidationMessageFor(m => m.Platforms)
     </div>
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.ReleaseDate)
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateAdded)
+        @Html.TextBoxFor(m => m.DateAdded, "{0:dd/mm/yy}", new { @class = "form-control datepicker" })
     </div>
 
-    <div class="d-flex flex-row">
-        <input type="text" class="form-control" /> <a class="rmv btn btn-danger">-</a>
+
+    <div class="form-group">
+        
+        <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#myModal">
+            <span class="icon"><i class="fas fa-plus"></i></span>Добавить жанр
+        </button>
+        <div class="ganrelist"></div>
     </div>
 
 
-    
 
-    @Html.TextBoxFor(m => m.DateAdded, "{0:dd/mm/yy}", new { @class = "form-control datepicker" })
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
 
-    <button type="submit" class="rmv btn btn-primary">Save</button>
+   
 }
 
 @section scripts
@@ -148,23 +148,25 @@
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "-60:+0",
-                dateFormat : "dd.mm.yy",
-                monthNames : ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-                dayNamesMin : ['Вс','Пн','Вт','Ср','Чт','Пт','Сб']
+                dateFormat: "dd.mm.yy",
+                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
             });
 
-         
 
-            $(".ganreitem").click(function (event) {
 
+            $('html').on('click', '.ganreitem', function () {
                 var id = $(this).attr("value");
                 var name = $(this).text();
-                $(".ganrelist").append("<div class='ganreitem'><input readonly='readonly' class='form-control' type ='text' name = 'Game.Genres[0].Id' value = '" + name + "' /> <span class='remove btn  btn-danger'>Удалить</span></div>");
+                $(".ganrelist").append("<div class='cont'><input readonly='readonly' class='form-control' type ='text' name = 'Game.Genres[0].Id' value = '" + name + "' /> <span class='remove btn  btn-danger'><i class='fas fa-minus'></i></span></div>");
+
+                $(this).remove();
 
             });
 
-            $('html').on('click','.remove', function () {                               
-                $(this).parent().remove();    
+
+            $('html').on('click', '.remove', function () {
+                $(this).parent().remove();
             });
 
         });

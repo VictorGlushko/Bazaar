@@ -21,13 +21,14 @@ namespace Bazaar
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap4.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap4.min.css",
                       "~/Content/site.css",
                       "~/Content/jquery-ui.css",
-                      "~/Content/interactive-list.css"));
+                      "~/Content/admin-custom.css",
+                      "~/Content/fontawesome-all.css"));
 
 
 
