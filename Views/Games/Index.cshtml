@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+<table id="example" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Game</th>
+            <th>Edit</th>
+
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+
+    </script>
+
+
+}

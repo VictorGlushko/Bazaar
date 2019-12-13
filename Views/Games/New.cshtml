@@ -11,9 +11,8 @@
     <p>Just add new game...</p>
 </div>
 
-@using (Html.BeginForm("Create", "Games"))
+@using (Html.BeginForm("Create", "Games", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
 
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
@@ -37,7 +36,7 @@
     <!-- Trigger the modal with a button -->
 
 
-    <div class="modal" id="myModal">
+    <div class="modal" id="ganresModal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -68,19 +67,67 @@
         </div>
     </div>
 
+    <div class="modal" id="modesModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Выберите жанр</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-    <!-- <div class="form-group">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <ul class="list-group">
 
+                        @foreach (var item in Model.Modes)
+                        {
+                            <a class="modeitem list-group-item" value="@item.Id">@item.Name</a>
+                        }
 
+                    </ul>
+                </div>
 
-         @Html.LabelFor(m => m.Genres)
-         @Html.DropDownListFor(m => m.Genres, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
-         @Html.ValidationMessageFor(m => m.Genres)
-     </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                </div>
 
-      <input type="text" name="Game.Genres[0].Id" value="1" />
-     <input type="text" name="Game.Genres[0].Name" value="NAme" />-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="osModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Выберите жанр</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <ul class="list-group">
+
+                        @foreach (var item in Model.Platforms)
+                        {
+                            <a class="ositem list-group-item" value="@item.Id">@item.Name</a>
+                        }
+
+                    </ul>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <div class="form-group">
@@ -102,49 +149,65 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Modes)
-        @Html.DropDownListFor(m => m.Modes, new SelectList(Model.Modes, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Modes)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Platforms)
-        @Html.DropDownListFor(m => m.Platforms, new SelectList(Model.Platforms, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Platforms)
-    </div>
-
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.DateAdded)
-        @Html.TextBoxFor(m => m.DateAdded, "{0:dd/mm/yy}", new { @class = "form-control datepicker" })
+        @Html.LabelFor(m => m.ReleaseDate)
+        @Html.TextBoxFor(m => m.ReleaseDate, "{0:dd.mm.yy}", new { @class = "form-control datepicker" })
     </div>
 
 
     <div class="form-group">
-        
-        <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#myModal">
-            <span class="icon"><i class="fas fa-plus"></i></span>Добавить жанр
+
+        <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#ganresModal">
+            <span class="icon"><i class="fas fa-plus"></i></span>Добавить жанры
         </button>
         <div class="ganrelist"></div>
     </div>
 
+    <div class="form-group">
 
+        <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#modesModal">
+            <span class="icon"><i class="fas fa-plus"></i></span>Добавить режимы
+        </button>
+        <div class="modelist"></div>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#osModal">
+            <span class="icon"><i class="fas fa-plus"></i></span>Добавить ОС
+        </button>
+        <div class="oslist"></div>
+    </div>
+
+    
+    <div class="form-group">
+        <div class="example-2">
+            <div class="form-group">
+               
+                <label for="file" class="btn btn-tertiary js-labelFile">
+                    <input type="file" name="upload" id="file" class="input-file">
+                    <i class="icon fa fa-check"></i>
+                    <span class="js-fileName">Загрузить файл</span>
+                </label>
+            </div>
+        </div>
+    </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 
-   
+
 }
+
+
+
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
 
-            $("input[name='DateAdded']").datepicker({
-                dateFormat: "dd/M/yy",
+            $("input[name='ReleaseDate']").datepicker({
+                dateFormat: "dd/mm/yy",
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "-60:+0",
@@ -158,16 +221,53 @@
             $('html').on('click', '.ganreitem', function () {
                 var id = $(this).attr("value");
                 var name = $(this).text();
-                $(".ganrelist").append("<div class='cont'><input readonly='readonly' class='form-control' type ='text' name = 'Game.Genres[0].Id' value = '" + name + "' /> <span class='remove btn  btn-danger'><i class='fas fa-minus'></i></span></div>");
+                $(".ganrelist").append("<div class='cont'><input readonly='readonly' class='form-control' type ='text' name = 'genres' value = '" + name + "' /> <span class='remove btn  btn-danger'><i class='fas fa-minus'></i></span></div>");
 
                 $(this).remove();
 
             });
 
+            $('html').on('click', '.modeitem', function () {
+                var id = $(this).attr("value");
+                var name = $(this).text();
+                $(".modelist").append("<div class='cont'><input readonly='readonly' class='form-control' type ='text' name = 'mode' value = '" + name + "' /> <span class='remove btn  btn-danger'><i class='fas fa-minus'></i></span></div>");
+
+                $(this).remove();
+
+            });
+
+            $('html').on('click', '.ositem', function () {
+                var id = $(this).attr("value");
+                var name = $(this).text();
+                $(".oslist").append("<div class='cont'><input readonly='readonly' class='form-control' type ='text' name = 'os' value = '" + name + "' /> <span class='remove btn  btn-danger'><i class='fas fa-minus'></i></span></div>");
+
+                $(this).remove();
+
+            });
 
             $('html').on('click', '.remove', function () {
                 $(this).parent().remove();
             });
+
+
+            (function () {
+
+                'use strict';
+
+                $('.input-file').each(function () {
+                    var $input = $(this),
+                        $label = $input.next('.js-labelFile'),
+                        labelVal = $label.html();
+
+                    $input.on('change', function (element) {
+                        var fileName = '';
+                        if (element.target.value) fileName = element.target.value.split('\\').pop();
+                        fileName ? $label.addClass('has-file').find('.js-fileName').html(fileName) : $label.removeClass('has-file').html(labelVal);
+                    });
+                });
+
+            })();
+
 
         });
     </script>

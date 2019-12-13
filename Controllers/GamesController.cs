@@ -27,7 +27,6 @@ namespace Bazaar.Controllers
 
         public ActionResult New()
         {
-
             var viewModel = new GameFormViewModel();
             viewModel.Genres = _unitOfWork.Genres.GetGenres();
             viewModel.Modes = _unitOfWork.Mode.GetModes();
@@ -37,20 +36,47 @@ namespace Bazaar.Controllers
 
         }
 
+        
+
+
         [HttpPost]                
-      
-        public ActionResult Create(Game game, Genre[] genreitems)
+        public ActionResult Create(Game game, 
+                string[] genres,
+                string[] mode,
+                string[] os,
+                HttpPostedFileBase upload
+            )
         {
-            var viewModel = new GameFormViewModel();
-            viewModel.Genres = _unitOfWork.Genres.GetGenres();
-            if (!ModelState.IsValid)
+            string fileName = System.IO.Path.GetFileName(upload.FileName);
+            // сохраняем файл в папку Files в проекте
+            string imgFullPath = "~/Content/posters/main/" + fileName;
+
+            upload.SaveAs(Server.MapPath(imgFullPath));
+     
+            game.Image = new Image
             {
-                return View("New", viewModel);
-            }
-            return View("New", viewModel);
+                MainImagePath = imgFullPath,
+                PreviewImagePath = "none"
+            }; 
+
+            var resultGanres = _unitOfWork.Genres.GetGenres()
+                .Where( s => genres.Contains(s.Name) ).ToList();
+            var resultsOs = _unitOfWork.Platform.GetPlatforms()
+                .Where(s => genres.Contains(s.Name)).ToList();
+            var resultsMode = _unitOfWork.Mode.GetModes()
+                .Where(s => genres.Contains(s.Name)).ToList();
+
+            game.Genres = resultGanres;
+            game.Platforms = resultsOs;
+            game.Modes = resultsMode;
+            game.DateAdded = DateTime.Now;
+
+            _unitOfWork.Games.Add(game);
+            _unitOfWork.Complete();
+
+
+            return View("New");
         }
-
-
 
     }
 }
