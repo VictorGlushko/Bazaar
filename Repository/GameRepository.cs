@@ -17,12 +17,12 @@ namespace Bazaar.Repository
         }
         public IEnumerable<Game> GetGames()
         {
-            return _context.Games.Include(g => g.Genres);
+            return _context.Games;
         }
 
         public Game GetGame(int id)
         {
-            throw new NotImplementedException();
+            return _context.Games.SingleOrDefault(g => g.Id == id);
         }
 
         public void Add(Game game)
