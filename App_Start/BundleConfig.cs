@@ -13,8 +13,10 @@ namespace Bazaar
                         "~/Scripts/jquery-ui.js",
                         "~/Scripts/jquery.validate*",
                         "~/Scripts/bootstrap4.min.js",
+                        "~/Scripts/bootbox.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/dataTables.bootstrap4.js"
+                       
                         ));
 
 
@@ -32,7 +34,8 @@ namespace Bazaar
                       "~/Content/jquery-ui.css",
                       "~/Content/DataTables/css/dataTables.bootstrap4.css",
                       "~/Content/admin-custom.css",
-                      "~/Content/fontawesome-all.css"));
+                      "~/Content/fontawesome-all.css",
+                      "~/Content/custom-main-page.css"));
 
 
 

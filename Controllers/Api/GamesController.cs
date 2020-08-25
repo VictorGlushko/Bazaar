@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
 using Bazaar.Domain.Entities;
+using Bazaar.Dtos;
 using Bazaar.Repository;
 
 namespace Bazaar.Controllers.Api
@@ -20,32 +22,37 @@ namespace Bazaar.Controllers.Api
         }
 
         //GET /api/games
-        public IEnumerable<Game> GetGames()
+        public IEnumerable<GameDto> GetGames()
         {
-            return _unitOfWork.Games.GetGames().ToList();
+            var rs = _unitOfWork.Games.GetGames().ToList().Select(Mapper.Map<Game, GameDto>);
+
+            return rs;
         }
 
 
         // GET /api/games/1
-        public Game GetGame(int id)
+        public GameDto GetGame(int id)
         {
             var game = _unitOfWork.Games.GetGame(id);
 
             if(game == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return game;
+            return Mapper.Map<Game,GameDto>(game);
         }
 
         // POST /api/game
         [HttpPost]
-        public Game CreateGame(Game game)
+        public GameDto CreateGame(GameDto gameDto)
         {
             if(ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var game = Mapper.Map<GameDto, Game>(gameDto);
+
             _unitOfWork.Games.Add(game);
             _unitOfWork.Complete();
-            return game;
+            return gameDto;
 
         }
         

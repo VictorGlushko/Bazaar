@@ -47,8 +47,13 @@ namespace Bazaar.Controllers
                 HttpPostedFileBase upload
             )
         {
+
+            if (ModelState.IsValid)
+            {
+
+            }
+
             string fileName = System.IO.Path.GetFileName(upload.FileName);
-            // сохраняем файл в папку Files в проекте
             string imgFullPath = "~/Content/posters/main/" + fileName;
 
             upload.SaveAs(Server.MapPath(imgFullPath));
@@ -60,11 +65,11 @@ namespace Bazaar.Controllers
             }; 
 
             var resultGanres = _unitOfWork.Genres.GetGenres()
-                .Where( s => genres.Contains(s.Name) ).ToList();
+                .Where( s => genres.Contains(s.Name)).ToList();
             var resultsOs = _unitOfWork.Platform.GetPlatforms()
-                .Where(s => genres.Contains(s.Name)).ToList();
+                .Where(s => os.Contains(s.Name)).ToList();
             var resultsMode = _unitOfWork.Mode.GetModes()
-                .Where(s => genres.Contains(s.Name)).ToList();
+                .Where(s => mode.Contains(s.Name)).ToList();
 
             game.Genres = resultGanres;
             game.Platforms = resultsOs;
@@ -75,8 +80,7 @@ namespace Bazaar.Controllers
             _unitOfWork.Complete();
 
 
-            return View("New");
-        }
+            return new RedirectResult("/Games");}
 
     }
 }

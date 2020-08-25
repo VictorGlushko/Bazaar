@@ -4,25 +4,103 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Игры</h2>
+
+<a class="btn btn-success" href="/Games/New" style="margin-bottom:20px; margin-top:20px;">Добавить новую игру <i class="fa fa-plus" aria-hidden="true"></i> </a>
 <table id="example" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>#</th>
-            <th>Game</th>
-            <th>Edit</th>
-
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Data Added</th>
+            <th>Delete</th>
         </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+
+    </tbody>
 </table>
 
 @section scripts
 {
     <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+        $(document).ready(function () {
+
+ 
+
+            var t = $('#example').DataTable({
+                ajax: {
+                    url: "/api/games",
+                    dataSrc:""
+                },
+                columnDefs: [ {
+                    searchable: false,
+                    orderable: false,
+                    targets: 0
+                } ],
+                order: [[ 1, 'asc' ]],
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "name",
+                        render: function(data, type, game) {
+                            return "<a href='/game/edit/" + game.id + "'>" + game.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "price"
+                    },
+                    {
+                        data: "quantity"
+                    },
+                    {
+                        data: "dateAdded"
+                    },
+                    {
+                        data: "id",
+                        render: function(data) {
+                            return "<button class='btn btn-danger js-delete' data-game-id=" +
+                                data +
+                                "> Delete <i class='fa fa-trash' aria-hidden='true'></i></button>";
+                        }
+                    }
+                    ]
+            });
+
+            t.on( 'order.dt search.dt', function () {
+                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            }).draw();
+
+
+
+            $('#example').on('click', '.js-delete', function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure?",
+                    function(result) {
+                        if (result) {
+                            $.ajax({
+
+                                url: "/api/games/" + button.attr("data-game-id"),
+                                method: "DELETE",
+                                success: function() {
+                                    button.parents("tr").remove();
+                                }
+                            });
+                        }
+
+                    });
+
+
+            });
+
+        });
 
     </script>
 

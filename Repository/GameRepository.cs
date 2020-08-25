@@ -32,7 +32,7 @@ namespace Bazaar.Repository
 
         public void Remove(Game game)
         {
-            throw new NotImplementedException();
+            _context.Games.Remove(game);
         }
     }
 }

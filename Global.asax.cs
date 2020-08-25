@@ -2,6 +2,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
+using Bazaar.App_Start;
 
 namespace Bazaar
 {
@@ -9,6 +11,7 @@ namespace Bazaar
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(c => c.AddProfile<MappingProFile>());
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
