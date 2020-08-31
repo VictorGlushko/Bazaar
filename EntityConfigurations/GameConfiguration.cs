@@ -7,6 +7,7 @@ namespace Bazaar.EntityConfigurations
     {
         public GameConfiguration()
         {
+
             Property(g => g.Name).IsRequired().HasMaxLength(255);
             Property(g => g.Description).IsRequired().HasMaxLength(4096);
             Property(g => g.Publisher).IsRequired().HasMaxLength(255);

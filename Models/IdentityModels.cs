@@ -22,14 +22,11 @@ namespace Bazaar.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genres { get; set; }
-
         public DbSet<Mode> Modes { get; set; }
-
         public DbSet<Platform> Platforms { get; set; }
-
+        public DbSet<Image> Images { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -46,6 +43,8 @@ namespace Bazaar.Models
             modelBuilder.Configurations.Add(new GameConfiguration());
 
             modelBuilder.Configurations.Add(new GenreConfiguration());
+            
+
             //modelBuilder.Configurations.Add(new PatientStatusConfiguration());
             base.OnModelCreating(modelBuilder);
         }

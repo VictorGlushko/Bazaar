@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Bazaar.Domain.Entities.Game>
+
+
+@foreach (var item in Model)
+{
+    <a href="#" class="item-link">
+        <div class="row block">
+
+            <div class="catalog-item-img">
+                 <img src="@item.Image.PreviewImagePath" alt="Alternate Text" />
+            </div>
+            <div class="catalog-item-content">
+
+                @item.Name
+                <div class="ganre">
+                    <i class="fab fa-steam fa-2x">&nbsp&nbsp</i> 
+                   @{
+                       foreach (var ganre in item.Genres)
+                       {
+                        <div> @ganre.Name&nbsp</div>
+                       }
+                   }
+                </div>
+
+            </div>
+            <div class="catalog-item-prace">
+
+
+                <div class="original-price "> <del>@item.Price</del></div><div class="discount">-50%</div>
+                <div class="final-price"> @item.Price <i class="fas fa-ruble-sign"></i></div>
+            </div>
+            
+            
+
+        </div>
+
+    </a>
+
+}

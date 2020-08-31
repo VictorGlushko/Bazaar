@@ -177,19 +177,17 @@
         <div class="oslist"></div>
     </div>
 
-    
+
     <div class="form-group">
-        <div class="example-2">
-            <div class="form-group">
-               
-                <label for="file" class="btn btn-tertiary js-labelFile">
-                    <input type="file" name="upload" id="file" class="input-file">
-                    <i class="icon fa fa-check"></i>
-                    <span class="js-fileName">Загрузить файл</span>
-                </label>
-            </div>
-        </div>
+        <label>Постер :</label>
+        <input type="file" name="poster" id="file" class="input-file">
     </div>
+
+    <div class="form-group">
+        <label>Скриншоты :</label>
+        <input type='file' multiple id='fileUpload' name="screens" />
+    </div>
+    
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
@@ -268,6 +266,7 @@
 
             })();
 
+        
 
         });
     </script>

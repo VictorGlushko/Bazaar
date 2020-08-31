@@ -17,7 +17,7 @@ namespace Bazaar.Repository
         }
         public IEnumerable<Game> GetGames()
         {
-            return _context.Games;
+            return _context.Games.Include(g=>g.Image).Include(g=>g.Genres);
         }
 
         public Game GetGame(int id)

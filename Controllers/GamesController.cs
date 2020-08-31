@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bazaar.Domain;
 using Bazaar.Domain.Entities;
 using Bazaar.Domain.ViewModel;
 using Bazaar.Repository;
@@ -18,7 +20,7 @@ namespace Bazaar.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        
         // GET: Games
         public ActionResult Index()
         {
@@ -44,7 +46,8 @@ namespace Bazaar.Controllers
                 string[] genres,
                 string[] mode,
                 string[] os,
-                HttpPostedFileBase upload
+                HttpPostedFileBase poster,
+                IEnumerable<HttpPostedFileBase> screens
             )
         {
 
@@ -53,16 +56,45 @@ namespace Bazaar.Controllers
 
             }
 
-            string fileName = System.IO.Path.GetFileName(upload.FileName);
-            string imgFullPath = "~/Content/posters/main/" + fileName;
 
-            upload.SaveAs(Server.MapPath(imgFullPath));
-     
-            game.Image = new Image
+            string vDirPath = Path.Combine("~\\Content\\posters\\", game.Name.RemoveInvalidChars());
+            string savePath = Path.Combine("..\\..\\Content\\posters\\", game.Name.RemoveInvalidChars());
+
+            string dirPath = Server.MapPath(vDirPath);
+            if (!Directory.Exists(dirPath))
             {
-                MainImagePath = imgFullPath,
-                PreviewImagePath = "none"
-            }; 
+                var dir = Directory.CreateDirectory(dirPath);
+            }
+
+            var image = new Image();
+            var images = new List<ImagePath>();
+
+
+
+            string fileNamePoster =    Path.GetFileName(poster.FileName);
+            string fileFullPath = Path.Combine(vDirPath, fileNamePoster);
+            image.MainImagePath = "None";
+            image.PreviewImagePath = Path.Combine(savePath, fileNamePoster);
+
+            poster.SaveAs(Server.MapPath(fileFullPath));
+
+
+
+
+            foreach (var img in screens)
+            {
+                string fileNameScreen = Path.GetFileName(img.FileName);
+                string screenFullPath = Path.Combine(vDirPath, fileNameScreen);
+
+                ImagePath ip = new ImagePath { Path = Path.Combine(savePath, screenFullPath) };
+                ip.Image = image;
+                images.Add(ip);
+                
+                img.SaveAs(Server.MapPath(screenFullPath));
+
+            }
+
+            image.Posters = images;
 
             var resultGanres = _unitOfWork.Genres.GetGenres()
                 .Where( s => genres.Contains(s.Name)).ToList();
@@ -71,6 +103,8 @@ namespace Bazaar.Controllers
             var resultsMode = _unitOfWork.Mode.GetModes()
                 .Where(s => mode.Contains(s.Name)).ToList();
 
+            game.Image = image;
+            image.Game = game;
             game.Genres = resultGanres;
             game.Platforms = resultsOs;
             game.Modes = resultsMode;

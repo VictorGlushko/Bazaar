@@ -250,6 +250,34 @@
     <Compile Include="Migrations\201912091924391_AddTablePlatform.designer.cs">
       <DependentUpon>201912091924391_AddTablePlatform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008251219081_DeleteConnectionGameImg.cs" />
+    <Compile Include="Migrations\202008251219081_DeleteConnectionGameImg.designer.cs">
+      <DependentUpon>202008251219081_DeleteConnectionGameImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251224373_RelationGameImg.cs" />
+    <Compile Include="Migrations\202008251224373_RelationGameImg.designer.cs">
+      <DependentUpon>202008251224373_RelationGameImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251241215_RmvImg.cs" />
+    <Compile Include="Migrations\202008251241215_RmvImg.designer.cs">
+      <DependentUpon>202008251241215_RmvImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251243576_tmp1.cs" />
+    <Compile Include="Migrations\202008251243576_tmp1.designer.cs">
+      <DependentUpon>202008251243576_tmp1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251257132_BuildDB.cs" />
+    <Compile Include="Migrations\202008251257132_BuildDB.designer.cs">
+      <DependentUpon>202008251257132_BuildDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008251312106_OneToOneGameImg.cs" />
+    <Compile Include="Migrations\202008251312106_OneToOneGameImg.designer.cs">
+      <DependentUpon>202008251312106_OneToOneGameImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008292103074_AddImages.cs" />
+    <Compile Include="Migrations\202008292103074_AddImages.designer.cs">
+      <DependentUpon>202008292103074_AddImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -444,6 +472,9 @@
     <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\admin-custom.css" />
+    <Content Include="Content\img\slider\BL3_1.jpg" />
+    <Content Include="Content\img\slider\pubg-sale.jpg" />
+    <Content Include="Content\img\slider\steamplay.jpg" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
@@ -466,6 +497,7 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\Proxima_Nova.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -621,6 +653,7 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Home\_Items.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -676,6 +709,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912091924391_AddTablePlatform.resx">
       <DependentUpon>201912091924391_AddTablePlatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251219081_DeleteConnectionGameImg.resx">
+      <DependentUpon>202008251219081_DeleteConnectionGameImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251224373_RelationGameImg.resx">
+      <DependentUpon>202008251224373_RelationGameImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251241215_RmvImg.resx">
+      <DependentUpon>202008251241215_RmvImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251243576_tmp1.resx">
+      <DependentUpon>202008251243576_tmp1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251257132_BuildDB.resx">
+      <DependentUpon>202008251257132_BuildDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008251312106_OneToOneGameImg.resx">
+      <DependentUpon>202008251312106_OneToOneGameImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008292103074_AddImages.resx">
+      <DependentUpon>202008292103074_AddImages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
