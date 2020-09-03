@@ -1,4 +1,18 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+body {
+    background:
+              -webkit-linear-gradient(88deg, hsla(89.93, 0%, 16.02%, 1) 0%, hsla(89.93, 0%, 16.02%, 0) 65%),
+              -webkit-linear-gradient(315deg, hsla(330.67, 0%, 12.8%, 1) 0%, hsla(330.67, 0%, 12.8%, 0) 70%),
+              -webkit-linear-gradient(135deg, hsla(347.14, 44.69%, 18.32%, 1) 15%, hsla(347.14, 44.69%, 18.32%, 0) 80%),
+              -webkit-linear-gradient(205deg, hsla(96.53, 0%, 0%, 1) 100%, hsla(96.53, 0%, 0%, 0) 70%);
+    background:
+              linear-gradient(2deg, hsla(89.93, 0%, 16.02%, 1) 0%, hsla(89.93, 0%, 16.02%, 0) 65%),
+              linear-gradient(135deg, hsla(330.67, 0%, 12.8%, 1) 0%, hsla(330.67, 0%, 12.8%, 0) 70%),
+              linear-gradient(315deg, hsla(347.14, 44.69%, 18.32%, 1) 15%, hsla(347.14, 44.69%, 18.32%, 0) 80%),
+              linear-gradient(245deg, hsla(96.53, 0%, 0%, 1) 100%, hsla(96.53, 0%, 0%, 0) 70%);
+}
+
 .catalog {
     background: #F3F3F3;
     display: block;
@@ -9,6 +23,7 @@
 
 
 .main-slider {
+   
     position: relative;
     background: #1d1f22;
     margin-bottom: 23px;
@@ -18,15 +33,17 @@
 }
 
 .container-slider {
+
     max-width: 845px;
     padding: 0 0px;
     margin: 0 auto;
+    margin-top: 50px;
     position: relative;
     background: #337ab7;
 }
 
 .container {
-    background: grey;
+    
 }
 
 #scrolList {
@@ -46,6 +63,7 @@
 }
 
 .block {
+   
     background: #343A40;
     height: 100px;
     color: #f3f3f3;
@@ -103,11 +121,10 @@ img{
 }
 
 .final-price {
-    text-align: center;
     border: 1px solid #343A40;
     padding: 0 5px;
     margin-top: 7px; 
-    text-align: center;
+    text-align: right;
     font-size: 20px;
 }
 

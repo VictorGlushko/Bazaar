@@ -1,26 +1,25 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Игры</h2>
 
-<a class="btn btn-success" href="/Games/New" style="margin-bottom:20px; margin-top:20px;">Добавить новую игру <i class="fa fa-plus" aria-hidden="true"></i> </a>
+<a class="btn btn-success" href="~/Admin/Games/New" style="margin-bottom:20px; margin-top:20px;">Добавить новую игру <i class="fa fa-plus" aria-hidden="true"></i> </a>
 <table id="example" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Price</th>
+            <th>Origin Price</th>
+            <th>Final Price</th>
             <th>Quantity</th>
             <th>Data Added</th>
             <th>Delete</th>
         </tr>
     </thead>
-    <tbody>
-
-    </tbody>
+    <tbody></tbody>
 </table>
 
 @section scripts
@@ -28,7 +27,7 @@
     <script>
         $(document).ready(function () {
 
- 
+
 
             var t = $('#example').DataTable({
                 ajax: {
@@ -52,7 +51,10 @@
                         }
                     },
                     {
-                        data: "price"
+                        data: "originalPrice"
+                    },
+                    {
+                        data: "finalPrice"
                     },
                     {
                         data: "quantity"

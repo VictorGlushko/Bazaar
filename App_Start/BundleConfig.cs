@@ -35,9 +35,22 @@ namespace Bazaar
                       "~/Content/DataTables/css/dataTables.bootstrap4.css",
                       "~/Content/admin-custom.css",
                       "~/Content/fontawesome-all.css",
-                      "~/Content/custom-main-page.css"));
+                      "~/Content/custom-main-page.css",
+                      "~/Content/custom-nav.css",
+                      "~/Content/custom-carousel.css"));
 
 
+            bundles.Add(new ScriptBundle("~/Content/admin-css").Include(
+                    "~/Content/bootstrap4.min.css",
+                    "~/Content/site.css",
+                    "~/Content/jquery-ui.css",
+                    "~/Content/DataTables/css/dataTables.bootstrap4.css",
+                    "~/Content/admin-custom.css",
+                    "~/Content/fontawesome-all.css",
+                    "~/Content/custom-nav.css",
+                    "~/Content/custom-carousel.css",
+                    "~/Content/custom-new-game.css"));
+                
 
 
 

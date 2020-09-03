@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.description-block {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+}
+
+h3{
+    color: #f8f8ff;
+    opacity: 1;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+p{
+    color: #f8f8ff;
+    opacity: 1;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/*.col-md-8 {
+    padding: 0px;
+}*/
+
+.slide-area {
+   
+}

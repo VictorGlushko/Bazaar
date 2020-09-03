@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bazaar.Domain.Entities;
 
 namespace Bazaar
 {
@@ -12,6 +13,8 @@ namespace Bazaar
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute("Game","Game/{id}", new { controller = "Game", action = "Index" , id = UrlParameter.Optional },new[] { "Bazaar.Controllers" });
 
             routes.MapRoute(
                 name: "Default",

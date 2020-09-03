@@ -9,18 +9,18 @@ using Bazaar.Domain.Entities;
 using Bazaar.Domain.ViewModel;
 using Bazaar.Repository;
 
-namespace Bazaar.Controllers
+
+namespace Bazaar.Areas.Admin.Controllers
 {
     public class GamesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-
         public GamesController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        
+
         // GET: Games
         public ActionResult Index()
         {
@@ -38,11 +38,11 @@ namespace Bazaar.Controllers
 
         }
 
-        
 
 
-        [HttpPost]                
-        public ActionResult Create(Game game, 
+
+        [HttpPost]
+        public ActionResult Create(GameFormViewModel game,
                 string[] genres,
                 string[] mode,
                 string[] os,
@@ -56,6 +56,22 @@ namespace Bazaar.Controllers
 
             }
 
+            
+
+            string slug = game.Name.GenerateSlug();
+            game.Slug = slug;
+
+            if (_unitOfWork.Games.GetGames().Any(g => g.Slag.Equals(slug)))
+            {
+                game.Genres = _unitOfWork.Genres.GetGenres();
+                game.Modes = _unitOfWork.Mode.GetModes();
+                game.Platforms = _unitOfWork.Platform.GetPlatforms();
+                ModelState.AddModelError("","That game name is taken!");
+
+                return View("New", game);
+            }
+
+            
 
             string vDirPath = Path.Combine("~\\Content\\posters\\", game.Name.RemoveInvalidChars());
             string savePath = Path.Combine("..\\..\\Content\\posters\\", game.Name.RemoveInvalidChars());
@@ -71,7 +87,7 @@ namespace Bazaar.Controllers
 
 
 
-            string fileNamePoster =    Path.GetFileName(poster.FileName);
+            string fileNamePoster = Path.GetFileName(poster.FileName);
             string fileFullPath = Path.Combine(vDirPath, fileNamePoster);
             image.MainImagePath = "None";
             image.PreviewImagePath = Path.Combine(savePath, fileNamePoster);
@@ -89,7 +105,7 @@ namespace Bazaar.Controllers
                 ImagePath ip = new ImagePath { Path = Path.Combine(savePath, screenFullPath) };
                 ip.Image = image;
                 images.Add(ip);
-                
+
                 img.SaveAs(Server.MapPath(screenFullPath));
 
             }
@@ -97,24 +113,44 @@ namespace Bazaar.Controllers
             image.Posters = images;
 
             var resultGanres = _unitOfWork.Genres.GetGenres()
-                .Where( s => genres.Contains(s.Name)).ToList();
-            var resultsOs = _unitOfWork.Platform.GetPlatforms()
+                .Where(s => genres.Contains(s.Name)).ToList();
+            var resultsPlatform = _unitOfWork.Platform.GetPlatforms()
                 .Where(s => os.Contains(s.Name)).ToList();
             var resultsMode = _unitOfWork.Mode.GetModes()
                 .Where(s => mode.Contains(s.Name)).ToList();
 
-            game.Image = image;
-            image.Game = game;
-            game.Genres = resultGanres;
-            game.Platforms = resultsOs;
-            game.Modes = resultsMode;
-            game.DateAdded = DateTime.Now;
+            Game gameDto = new Game();
 
-            _unitOfWork.Games.Add(game);
+            gameDto.Id = game.Id;
+            gameDto.Name = game.Name;
+            gameDto.Slag = game.Slug;
+            gameDto.OriginalPrice = game.OriginalPrice;
+            gameDto.FinalPrice = game.FinalPrice;
+            gameDto.Description = game.Description;
+            gameDto.Genres = resultGanres;
+            gameDto.ReleaseDate = game.ReleaseDate;
+            gameDto.Publisher = game.Publisher;
+            gameDto.Developer = game.Developer;
+            gameDto.Language = game.Language;
+            //gameDto.Tags = 
+            gameDto.Modes = resultsMode;
+            gameDto.Platforms = resultsPlatform;
+            gameDto.DateAdded = game.DateAdded;
+            gameDto.Quantity = game.Quantity;
+            gameDto.Image = image;
+
+            image.Game = gameDto;
+            gameDto.Genres = resultGanres;
+            gameDto.Platforms = resultsPlatform;
+            gameDto.Modes = resultsMode;
+            gameDto.DateAdded = DateTime.Now;
+
+            _unitOfWork.Games.Add(gameDto);
             _unitOfWork.Complete();
 
 
-            return new RedirectResult("/Games");}
+            return new RedirectResult("~/Admin/Games");
+        }
 
     }
 }

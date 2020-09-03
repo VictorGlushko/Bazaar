@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "New";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 
@@ -10,6 +10,22 @@
     <h1>Add new game</h1>
     <p>Just add new game...</p>
 </div>
+
+<table class="model-state">
+    @foreach (var item in ViewContext.ViewData.ModelState) 
+    {
+        if (item.Value.Errors.Any())
+        { 
+            <tr>
+                <td><b>@item.Key</b></td>
+                <td>@((item.Value == null || item.Value.Value == null) ? "<null>" : item.Value.Value.RawValue)</td>
+                <td>@(string.Join("; ", item.Value.Errors.Select(x => x.ErrorMessage)))</td>
+            </tr>
+        }
+    }
+</table>
+
+
 
 @using (Html.BeginForm("Create", "Games", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -27,9 +43,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Price)
-        @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Price)
+        @Html.LabelFor(m => m.OriginalPrice)
+        @Html.TextBoxFor(m => m.OriginalPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OriginalPrice)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FinalPrice)
+        @Html.TextBoxFor(m => m.FinalPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FinalPrice)
     </div>
 
 
@@ -130,6 +153,8 @@
     </div>
 
 
+
+
     <div class="form-group">
         @Html.LabelFor(m => m.Publisher)
         @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
@@ -187,7 +212,7 @@
         <label>Скриншоты :</label>
         <input type='file' multiple id='fileUpload' name="screens" />
     </div>
-    
+
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
@@ -266,7 +291,7 @@
 
             })();
 
-        
+
 
         });
     </script>

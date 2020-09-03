@@ -10,7 +10,8 @@ namespace Bazaar.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public int OriginalPrice { get; set; }
+        public int FinalPrice { get; set; }
         public DateTime DateAdded { get; set; }
         public int Quantity { get; set; }
     }

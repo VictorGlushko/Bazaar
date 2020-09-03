@@ -3,7 +3,8 @@
 
 @foreach (var item in Model)
 {
-    <a href="#" class="item-link">
+    
+    <a href=@Url.Action("Index","Game",new { id = item.Id }) class="item-link">
         <div class="row block">
 
             <div class="catalog-item-img">
@@ -12,7 +13,7 @@
             <div class="catalog-item-content">
 
                 @item.Name
-                <div class="ganre">
+                <div class="ganre">\
                     <i class="fab fa-steam fa-2x">&nbsp&nbsp</i> 
                    @{
                        foreach (var ganre in item.Genres)
@@ -26,8 +27,8 @@
             <div class="catalog-item-prace">
 
 
-                <div class="original-price "> <del>@item.Price</del></div><div class="discount">-50%</div>
-                <div class="final-price"> @item.Price <i class="fas fa-ruble-sign"></i></div>
+                <div class="original-price "> <del>@item.OriginalPrice</del></div><div class="discount">- @(100 - (item.FinalPrice * 100 / item.OriginalPrice)) %</div>
+                <div class="final-price"> @item.FinalPrice <i class="fas fa-ruble-sign"></i></div>
             </div>
             
             

@@ -72,7 +72,8 @@ namespace Bazaar.Controllers.Api
             //Aghtung Not full prop (useAutoMapper)
             gameInDb.Name = game.Name;
             gameInDb.Description = game.Description;
-            gameInDb.Price = game.Price;
+            gameInDb.OriginalPrice = game.OriginalPrice;
+            gameInDb.FinalPrice = game.FinalPrice;
             gameInDb.Modes = game.Modes;
             gameInDb.DateAdded = game.DateAdded;
             gameInDb.Platforms = game.Platforms;
