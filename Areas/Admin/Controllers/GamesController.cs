@@ -73,8 +73,8 @@ namespace Bazaar.Areas.Admin.Controllers
 
             
 
-            string vDirPath = Path.Combine("~\\Content\\posters\\", game.Name.RemoveInvalidChars());
-            string savePath = Path.Combine("..\\..\\Content\\posters\\", game.Name.RemoveInvalidChars());
+            string vDirPath = Path.Combine("~\\Content\\posters\\", game.Name.GenerateSlug());
+            string savePath = Path.Combine("..\\..\\Content\\posters\\", game.Name.GenerateSlug());
 
             string dirPath = Server.MapPath(vDirPath);
             if (!Directory.Exists(dirPath))

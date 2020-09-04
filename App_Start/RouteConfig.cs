@@ -14,7 +14,7 @@ namespace Bazaar
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Game","Game/{id}", new { controller = "Game", action = "Index" , id = UrlParameter.Optional },new[] { "Bazaar.Controllers" });
+            routes.MapRoute("Game", "Game/{slug}", new { controller = "Game", action = "Index", slug = UrlParameter.Optional },new[] { "Bazaar.Controllers" });
 
             routes.MapRoute(
                 name: "Default",

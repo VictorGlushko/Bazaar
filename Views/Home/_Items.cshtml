@@ -4,11 +4,11 @@
 @foreach (var item in Model)
 {
     
-    <a href=@Url.Action("Index","Game",new { id = item.Id }) class="item-link">
+    <a href=@Url.Action("Index","Game",new { slug = item.Slag }) class="item-link">
         <div class="row block">
 
             <div class="catalog-item-img">
-                 <img src="@item.Image.PreviewImagePath" alt="Alternate Text" />
+                 <img src="@item.Image.PreviewImagePath" alt="Alternate Text" /> 
             </div>
             <div class="catalog-item-content">
 
