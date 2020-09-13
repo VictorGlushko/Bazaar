@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using Bazaar.Domain;
 using Bazaar.Domain.Entities;
@@ -56,7 +58,7 @@ namespace Bazaar.Areas.Admin.Controllers
 
             }
 
-            
+
 
             string slug = game.Name.GenerateSlug();
             game.Slug = slug;
@@ -66,51 +68,55 @@ namespace Bazaar.Areas.Admin.Controllers
                 game.Genres = _unitOfWork.Genres.GetGenres();
                 game.Modes = _unitOfWork.Mode.GetModes();
                 game.Platforms = _unitOfWork.Platform.GetPlatforms();
-                ModelState.AddModelError("","That game name is taken!");
+                ModelState.AddModelError("", "That game name is taken!");
 
                 return View("New", game);
             }
 
-            
 
-            string vDirPath = Path.Combine("~\\Content\\posters\\", game.Name.GenerateSlug());
-            string savePath = Path.Combine("..\\..\\Content\\posters\\", game.Name.GenerateSlug());
+            var originalDirectory = new DirectoryInfo(string.Format($"{Server.MapPath(@"~")}Content\\img\\uploads"));
+            var vOriginalDirectory = @"..\..\Content\img\uploads";
 
-            string dirPath = Server.MapPath(vDirPath);
-            if (!Directory.Exists(dirPath))
+
+            string gameDirPath = Path.Combine(originalDirectory.ToString(), slug);
+            string vGameDirPath = Path.Combine(vOriginalDirectory, slug);
+
+            if (!Directory.Exists(gameDirPath))
             {
-                var dir = Directory.CreateDirectory(dirPath);
+                Directory.CreateDirectory(gameDirPath);
             }
 
-            var image = new Image();
-            var images = new List<ImagePath>();
-
+            var MediaResources = new MediaResources();
 
 
             string fileNamePoster = Path.GetFileName(poster.FileName);
-            string fileFullPath = Path.Combine(vDirPath, fileNamePoster);
-            image.MainImagePath = "None";
-            image.PreviewImagePath = Path.Combine(savePath, fileNamePoster);
 
-            poster.SaveAs(Server.MapPath(fileFullPath));
+            string vFileFullPath = Path.Combine(vGameDirPath, fileNamePoster);
+            string fileFullPath = Path.Combine(gameDirPath, fileNamePoster);
 
+
+            MediaResources.MainImagePath = vFileFullPath;
+            poster.SaveAs(fileFullPath);
 
 
 
             foreach (var img in screens)
             {
                 string fileNameScreen = Path.GetFileName(img.FileName);
-                string screenFullPath = Path.Combine(vDirPath, fileNameScreen);
+                string screenFullPath = Path.Combine(gameDirPath, fileNameScreen);
 
-                ImagePath ip = new ImagePath { Path = Path.Combine(savePath, screenFullPath) };
-                ip.Image = image;
-                images.Add(ip);
+                //ImagePath ip = new ImagePath { Path = Path.Combine(savePath, screenFullPath) };
+                //ip.Image = image;
+                //images.Add(ip);
 
-                img.SaveAs(Server.MapPath(screenFullPath));
+                img.SaveAs(screenFullPath);
 
             }
 
-            image.Posters = images;
+            MediaResources.GalleryPath = gameDirPath;
+            MediaResources.VideoLink = game.MediaResources.VideoLink;
+
+
 
             var resultGanres = _unitOfWork.Genres.GetGenres()
                 .Where(s => genres.Contains(s.Name)).ToList();
@@ -132,14 +138,14 @@ namespace Bazaar.Areas.Admin.Controllers
             gameDto.Publisher = game.Publisher;
             gameDto.Developer = game.Developer;
             gameDto.Language = game.Language;
-            //gameDto.Tags = 
+
             gameDto.Modes = resultsMode;
             gameDto.Platforms = resultsPlatform;
             gameDto.DateAdded = game.DateAdded;
             gameDto.Quantity = game.Quantity;
-            gameDto.Image = image;
+            gameDto.MediaResources = MediaResources;
 
-            image.Game = gameDto;
+            MediaResources.Game = gameDto;
             gameDto.Genres = resultGanres;
             gameDto.Platforms = resultsPlatform;
             gameDto.Modes = resultsMode;

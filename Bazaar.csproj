@@ -297,6 +297,18 @@
     <Compile Include="Migrations\202009042032440_AddGalleryPath.designer.cs">
       <DependentUpon>202009042032440_AddGalleryPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009131638173_AddMediInGame.cs" />
+    <Compile Include="Migrations\202009131638173_AddMediInGame.designer.cs">
+      <DependentUpon>202009131638173_AddMediInGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009131651012_AddMediaResourcesInContext.cs" />
+    <Compile Include="Migrations\202009131651012_AddMediaResourcesInContext.designer.cs">
+      <DependentUpon>202009131651012_AddMediaResourcesInContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009131658090_tmp2.cs" />
+    <Compile Include="Migrations\202009131658090_tmp2.designer.cs">
+      <DependentUpon>202009131658090_tmp2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -500,6 +512,7 @@
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.structure.css" />
     <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\custom-game-page.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\solid.css" />
@@ -768,6 +781,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009042032440_AddGalleryPath.resx">
       <DependentUpon>202009042032440_AddGalleryPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009131638173_AddMediInGame.resx">
+      <DependentUpon>202009131638173_AddMediInGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009131651012_AddMediaResourcesInContext.resx">
+      <DependentUpon>202009131651012_AddMediaResourcesInContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009131658090_tmp2.resx">
+      <DependentUpon>202009131658090_tmp2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

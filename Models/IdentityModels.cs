@@ -26,7 +26,7 @@ namespace Bazaar.Models
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Mode> Modes { get; set; }
         public DbSet<Platform> Platforms { get; set; }
-        public DbSet<Image> Images { get; set; }
+        public DbSet<MediaResources> MediaResources { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -24,7 +24,11 @@ namespace Bazaar.Controllers
         {
             var game = _unitOfWork.Games.GetGames().FirstOrDefault(g => g.Slag.Equals(slug));
 
+            if (game == null)
+                return View();
+
             var gvm = new GameFormViewModel(game);
+
 
 
             return View(gvm);

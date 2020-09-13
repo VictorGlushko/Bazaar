@@ -37,7 +37,8 @@ namespace Bazaar
                       "~/Content/fontawesome-all.css",
                       "~/Content/custom-main-page.css",
                       "~/Content/custom-nav.css",
-                      "~/Content/custom-carousel.css"));
+                      "~/Content/custom-carousel.css",
+                      "~/Content/custom-game-page.css"));
 
 
             bundles.Add(new ScriptBundle("~/Content/admin-css").Include(

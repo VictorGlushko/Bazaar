@@ -17,12 +17,12 @@ namespace Bazaar.Repository
         }
         public IEnumerable<Game> GetGames()
         {
-            return _context.Games.Include(g=>g.Image).Include(g=>g.Genres);
+            return _context.Games.Include(g=>g.MediaResources).Include(g=>g.Genres);
         }
 
         public Game GetGame(int id)
         {
-            return _context.Games.SingleOrDefault(g => g.Id == id);
+            return _context.Games.Include(g => g.MediaResources).SingleOrDefault(g => g.Id == id);
         }
 
         public void Add(Game game)
