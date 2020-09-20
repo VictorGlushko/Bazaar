@@ -309,6 +309,10 @@
     <Compile Include="Migrations\202009131658090_tmp2.designer.cs">
       <DependentUpon>202009131658090_tmp2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009200905322_AddSysReqTable.cs" />
+    <Compile Include="Migrations\202009200905322_AddSysReqTable.designer.cs">
+      <DependentUpon>202009200905322_AddSysReqTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -843,6 +847,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009131658090_tmp2.resx">
       <DependentUpon>202009131658090_tmp2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009200905322_AddSysReqTable.resx">
+      <DependentUpon>202009200905322_AddSysReqTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

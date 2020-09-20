@@ -74,19 +74,36 @@ namespace Bazaar.Areas.Admin.Controllers
             }
 
 
-            var originalDirectory = new DirectoryInfo(string.Format($"{Server.MapPath(@"~")}Content\\img\\uploads"));
-            var vOriginalDirectory = @"..\..\Content\img\uploads";
+            var originalDirectory = new DirectoryInfo(string.Format($"{Server.MapPath(@"~")}Content\\img\\gallery"));
+            var vOriginalDirectory = @"..\..\Content\img\gallery";
 
 
             string gameDirPath = Path.Combine(originalDirectory.ToString(), slug);
             string vGameDirPath = Path.Combine(vOriginalDirectory, slug);
+            string hrPath = Path.Combine(gameDirPath, "HR");
+            string lrPath = Path.Combine(gameDirPath, "LR");
+
 
             if (!Directory.Exists(gameDirPath))
             {
                 Directory.CreateDirectory(gameDirPath);
+                Directory.CreateDirectory(hrPath);
+                Directory.CreateDirectory(lrPath);
             }
 
+
+            var SystemRequirements = new SystemRequirements();
+
+            SystemRequirements.OperatingSystem = game.SystemRequirements.OperatingSystem;
+            SystemRequirements.Processor       = game.SystemRequirements.Processor;
+            SystemRequirements.RAM             = game.SystemRequirements.RAM;
+            SystemRequirements.VideoCard       = game.SystemRequirements.VideoCard;
+            SystemRequirements.HDD             = game.SystemRequirements.HDD;
+
+
+
             var MediaResources = new MediaResources();
+
 
 
             string fileNamePoster = Path.GetFileName(poster.FileName);
@@ -99,18 +116,21 @@ namespace Bazaar.Areas.Admin.Controllers
             poster.SaveAs(fileFullPath);
 
 
+            
+
 
             foreach (var img in screens)
             {
                 string fileNameScreen = Path.GetFileName(img.FileName);
-                string screenFullPath = Path.Combine(gameDirPath, fileNameScreen);
+                string hrFullPath = Path.Combine(hrPath, fileNameScreen);
+                string lrFullPath = Path.Combine(lrPath, fileNameScreen);
 
-                //ImagePath ip = new ImagePath { Path = Path.Combine(savePath, screenFullPath) };
-                //ip.Image = image;
-                //images.Add(ip);
+                img.SaveAs(hrFullPath);
 
-                img.SaveAs(screenFullPath);
-
+                WebImage lrImage = new WebImage(img.InputStream);
+                lrImage.Resize(350, 233);
+                lrImage.Save(lrFullPath);
+                
             }
 
             MediaResources.GalleryPath = gameDirPath;
@@ -144,12 +164,15 @@ namespace Bazaar.Areas.Admin.Controllers
             gameDto.DateAdded = game.DateAdded;
             gameDto.Quantity = game.Quantity;
             gameDto.MediaResources = MediaResources;
+            gameDto.SystemRequirements = SystemRequirements;
 
-            MediaResources.Game = gameDto;
             gameDto.Genres = resultGanres;
             gameDto.Platforms = resultsPlatform;
             gameDto.Modes = resultsMode;
             gameDto.DateAdded = DateTime.Now;
+
+            MediaResources.Game = gameDto;
+            SystemRequirements.Game = gameDto;
 
             _unitOfWork.Games.Add(gameDto);
             _unitOfWork.Complete();

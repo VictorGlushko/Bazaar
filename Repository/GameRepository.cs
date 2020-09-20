@@ -20,9 +20,16 @@ namespace Bazaar.Repository
             return _context.Games.Include(g=>g.MediaResources).Include(g=>g.Genres);
         }
 
+
+
         public Game GetGame(int id)
         {
-            return _context.Games.Include(g => g.MediaResources).SingleOrDefault(g => g.Id == id);
+            return _context.Games.Include(g => g.MediaResources).Include(g=>g.Genres).SingleOrDefault(g => g.Id == id);
+        }
+
+        public Game GetGame(string slug)
+        {
+            return _context.Games.Include(g => g.MediaResources).Include(g => g.Genres).Include(g=>g.SystemRequirements).SingleOrDefault(g => g.Slag.Equals(slug));
         }
 
         public void Add(Game game)

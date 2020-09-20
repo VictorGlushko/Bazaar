@@ -11,6 +11,8 @@ namespace Bazaar.Repository
     {
         IEnumerable<Game> GetGames();
         Game GetGame(int id);
+        Game GetGame(string slug);
+
         void Add(Game game);
         void Remove(Game game);
 

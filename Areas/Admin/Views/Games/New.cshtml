@@ -12,10 +12,10 @@
 </div>
 
 <table class="model-state">
-    @foreach (var item in ViewContext.ViewData.ModelState) 
+    @foreach (var item in ViewContext.ViewData.ModelState)
     {
         if (item.Value.Errors.Any())
-        { 
+        {
             <tr>
                 <td><b>@item.Key</b></td>
                 <td>@((item.Value == null || item.Value.Value == null) ? "<null>" : item.Value.Value.RawValue)</td>
@@ -29,7 +29,6 @@
 
 @using (Html.BeginForm("Create", "Games", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control col" })
@@ -42,19 +41,91 @@
         @Html.ValidationMessageFor(m => m.Description)
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.OriginalPrice)
-        @Html.TextBoxFor(m => m.OriginalPrice, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.OriginalPrice)
+
+    <div class="row">
+        <div class="col">
+           
+            <div class="form-group">
+                @Html.LabelFor(m => m.OriginalPrice)
+                @Html.TextBoxFor(m => m.OriginalPrice, new { @class = "form-control", @Value = "1000" })
+                @Html.ValidationMessageFor(m => m.OriginalPrice)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FinalPrice)
+                @Html.TextBoxFor(m => m.FinalPrice, new { @class = "form-control", @Value = "500"  })
+                @Html.ValidationMessageFor(m => m.FinalPrice)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.Publisher)
+                @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", @Value = "Publisher"  })
+                @Html.ValidationMessageFor(m => m.Publisher)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Developer)
+                @Html.TextBoxFor(m => m.Developer, new { @class = "form-control", @Value = "Developer"  })
+                @Html.ValidationMessageFor(m => m.Developer)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Language)
+                @Html.TextBoxFor(m => m.Language, new { @class = "form-control", @Value = "Русский"  })
+                @Html.ValidationMessageFor(m => m.Language)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ReleaseDate)
+                @Html.TextBoxFor(m => m.ReleaseDate, "{0:dd.mm.yy}", new { @class = "form-control datepicker" })
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.OperatingSystem)
+                @Html.TextBoxFor(m => m.SystemRequirements.OperatingSystem, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemRequirements.OperatingSystem)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.Processor)
+                @Html.TextBoxFor(m => m.SystemRequirements.Processor, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemRequirements.Processor)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.RAM)
+                @Html.TextBoxFor(m => m.SystemRequirements.RAM, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemRequirements.RAM)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.VideoCard)
+                @Html.TextBoxFor(m => m.SystemRequirements.VideoCard, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemRequirements.VideoCard)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.HDD)
+                @Html.TextBoxFor(m => m.SystemRequirements.HDD, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SystemRequirements.HDD)
+            </div>
+
+        </div>
+
     </div>
 
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.FinalPrice)
-        @Html.TextBoxFor(m => m.FinalPrice, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.FinalPrice)
-    </div>
+   
 
+
+   
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MediaResources.VideoLink)
+        @Html.TextBoxFor(m => m.MediaResources.VideoLink, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MediaResources.VideoLink)
+    </div>
 
     <!-- Trigger the modal with a button -->
 
@@ -153,36 +224,6 @@
     </div>
 
 
-
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Publisher)
-        @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Publisher)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Developer)
-        @Html.TextBoxFor(m => m.Developer, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Developer)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Language)
-        @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Language)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.ReleaseDate)
-        @Html.TextBoxFor(m => m.ReleaseDate, "{0:dd.mm.yy}", new { @class = "form-control datepicker" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.MediaResources.VideoLink)
-        @Html.TextBoxFor(m => m.MediaResources.VideoLink, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MediaResources.VideoLink)
-    </div>
 
 
     <div class="form-group">
