@@ -28,7 +28,6 @@ ul li a {
     text-decoration: none;
     padding: 5px;
     color: #fff;
-    
     transition: 0.5s;
 }
 
@@ -58,7 +57,7 @@ ul li a:hover {
     }
 
 ul li a:hover:before {
-    transition: transform 0.5s;
+   
     transform-origin: left;
     transform: scaleX(1);
 }

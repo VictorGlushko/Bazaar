@@ -42,14 +42,6 @@ body {
     background: #337ab7;
 }
 
-.container {
-    
-}
-
-#scrolList {
-   
-}
-
 .left-column{
     background: #343A40;
     height: 500px;
@@ -143,3 +135,37 @@ del {
         left: 0;
         transform: rotate(-20deg);
     }
+
+.tabs-area {
+   
+    width: 100%;
+    display: flex;
+    
+    padding: 5px;
+}
+
+.tab a{
+    font-family: 'Open sans', sans-serif;
+    font-size: 15px;
+    color: #f3f3f3;
+    margin-left: 10px;
+    padding: 10px 10px;
+    transition: .2s linear;
+    text-decoration: none;
+}
+
+
+.tab a:hover {
+    color: #F6325C;
+}
+
+.line{
+    margin-top: 3px;
+    width: 100%;
+    height: 1px;
+    background: #F6325C;
+}
+
+a:hover {
+    text-decoration: none;
+}
