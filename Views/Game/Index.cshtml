@@ -17,53 +17,49 @@
 
 
 <div class="container product-detail">
+    
+ 
+
+
+
+
     <div class="product-title">
         @Model.Name
     </div>
 
 
-
     <div class="row">
+
+
         <div class="col-md-12 col-lg-7">
 
-            <div class="">
 
-                <div id="thumbGallery"
-                     class="thumbGallery"
-                     data-thumbGallery="true"
-                     data-nav_effect="slide_horizontal"
-                     data-nav_delay="1"
-                     data-nav_timing="500"
-                     data-nav_delay_inverse="1"
-                     data-nav_pagination="6"
-                     data-gallery_effect="slide_horizontal"
-                     data-gallery_fullscreen_w="70%"
-                     data-gallery_fullscreen_h="70%"
-                     data-gallery_timing="1000"
-                     data-full_inline="true"
-                     data-full_inline_height="400"
-                     data-gallery_cover="true"
-                     data-thumb_ratio=4/3
-                     data-thumb_fit=false>
-                    
-                    @{
-                        foreach (var img in Model.GalleryImages)
-                        {
-                              <img src="../Content/img/gallery/@Model.Slug/LR/@img" data-highres="../Content/img/gallery/@Model.Slug/HR/@img" data-caption="" />
-                        }
+            <div id="thumbGallery"
+                 class="thumbGallery"
+                 data-thumbGallery="true"
+                 data-nav_effect="slide_horizontal"
+                 data-nav_delay="1"
+                 data-nav_timing="500"
+                 data-nav_delay_inverse="1"
+                 data-nav_pagination="6"
+                 data-gallery_effect="slide_horizontal"
+                 data-gallery_fullscreen_w="70%"
+                 data-gallery_fullscreen_h="70%"
+                 data-gallery_timing="1000"
+                 data-full_inline="true"
+                 data-full_inline_height="400"
+                 data-gallery_cover="true"
+                 data-thumb_ratio=4/3
+                 data-thumb_fit=false>
 
+                @{
+                    foreach (var img in Model.GalleryImages)
+                    {
+                        <img src="../Content/img/gallery/@Model.Slug/LR/@img" data-highres="../Content/img/gallery/@Model.Slug/HR/@img" data-caption=""/>
                     }
 
-
-
-                    
-
-
-                </div>
-
+                }
             </div>
-
-
 
             <!--
             <iframe width="100%" height="100%" src="@Model.MediaResources.VideoLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -72,63 +68,140 @@
         </div>
         <div class="col-md-12 col-lg-5">
             <div class="product-specification">
-                <div class="buy-button">
+                <div class="inner-content">
 
-                </div>
+                    <div class="description">
 
-                <div class="description">
-                    <div class="product-info">
-                        <span class="product-info-key">Жанр: </span>
-                        @{foreach (var ganre in Model.Genres) 
-                          {<a href="#" >@ganre.Name </a>}
-                        }
+                        
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-12 d-flex justify-content-between">
+                                    <div class="discount align-self-center">
+                                        - @(100 - (Model.FinalPrice * 100 / Model.OriginalPrice)) %
+                                    </div>
+                                    <div class=" fin-price align-self-center"> @Model.FinalPrice 
+                                        <i class="fas fa-ruble-sign"></i>
+                                    </div>
 
-                        <ul class="product-info-list">
+                                </div>
+                                <div class="col-xl-6 col-lg-12">
+                                    <div class="buy-button">
+                                        <a href="">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            В корзину&nbsp
+                                            <i class="fas fa-cart-plus"></i>
+                                        </a>
+                                    </div>
 
-                            <li class="product__info-item">
+                                </div>
+                            </div>
 
-                            </li>
+                       
+                            
+                       
+                            
+                          
 
-                            <li class="product__info-item">
-                                <span class="product-info-key">Издатель: </span>
-                                <span class="product-info-value">@Model.Publisher</span>
-                            </li>
-                            <li class="product__info-item">
-                                <span class="product-info-key">Разработчик: </span>
-                                <span class="product-info-value">@Model.Developer</span>
-                            </li>
-                            <li class="product__info-item">
-                                <span class="product-info-key">Язык: </span>
-                                <span class="product-info-value">@Model.Language</span>
-                            </li>
-                            <li class="product__info-item">
-                                <span class="product-info-key">Дата выхода: </span>
-                                <span class="product-info-value">@Model.ReleaseDate.ToString("D")</span>
-                            </li>
-                        </ul>
+
+
+                     
+
+                        <div class="detail-titel">
+                            <div class="title-underline-text">
+                                Детали игры
+                            </div>
+                        </div>
+
+
+                        <div class="detail-item">
+                            <div class="row p-2">
+
+                                <div class="col-xl-5 col-lg-12 p-0">
+                                    Жанр :
+                                </div>
+                                <div class="col-xl-7 col-lg-12 p-0">
+                                    @{foreach (var ganre in Model.Genres)
+                                      {<a href="#">@ganre.Name </a>}
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="detail-item">
+                            <div class="row p-2">
+                                <div class="col-xl-5 col-lg-12 p-0">
+                                    Издатель:
+                                </div>
+                                <div class="col-xl-7 col-lg-12 p-0">
+                                    @Model.Publisher
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+
+                            <div class="row p-2">
+                                <div class="col-xl-5 col-lg-12 p-0">
+                                    Разработчик:
+                                </div>
+                                <div class="col-xl-7 col-lg-12 p-0">
+                                    @Model.Developer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="row p-2">
+                                <div class="col-xl-5 col-lg-12 p-0">
+                                    Дата выхода:
+                                </div>
+                                <div class="col-xl-7 col-lg-12 p-0">
+                                    @Model.ReleaseDate.ToString("D")
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="row p-2">
+                                <div class="col-xl-5 col-lg-12 p-0">
+                                    Наличие:
+                                </div>
+                                <div class="col-xl-7 col-lg-12 p-0">
+                                    много
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
+
 
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <ul class="col nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#about">Описание</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">Системные требования</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">Активация</a>
+            </li>
+        </ul>
+    </div>
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#about">Описание</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu1">Системные требования</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">Активация</a>
-        </li>
-    </ul>
-
+</div>
     <!-- Tab panes -->
     <div class="tab-content">
-        <div id="about" class="container tab-pane active"><br>
+        <div id="about" class="container tab-pane active tabs-area"><br>
             <h3>Описание</h3>
             <p>@Model.Description</p>
         </div>
@@ -163,7 +236,7 @@
         </div>
     </div>
 
-</div>
+
 
 <!--<img class="main-poster" src="@Model.MediaResources.PreviewImagePath" alt="" /> -->
 @section Scripts {

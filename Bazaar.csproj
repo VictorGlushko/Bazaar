@@ -206,6 +206,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Dtos\GameDto.cs" />
     <Compile Include="EntityConfigurations\GameConfiguration.cs" />
@@ -312,6 +313,10 @@
     <Compile Include="Migrations\202009200905322_AddSysReqTable.cs" />
     <Compile Include="Migrations\202009200905322_AddSysReqTable.designer.cs">
       <DependentUpon>202009200905322_AddSysReqTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009241832475_AddSoldToGame.cs" />
+    <Compile Include="Migrations\202009241832475_AddSoldToGame.designer.cs">
+      <DependentUpon>202009241832475_AddSoldToGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -592,6 +597,7 @@
     <Content Include="fonts\thumbgallery.eot" />
     <Content Include="fonts\thumbgallery.ttf" />
     <Content Include="fonts\thumbgallery.woff" />
+    <Content Include="fonts\BrutalType.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -691,6 +697,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.mb.gallery.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -748,12 +756,15 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Home\_Items.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Home\_GanresItems.cshtml" />
+    <Content Include="Views\Home\_DiscountItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\posters\main\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Some\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
@@ -850,6 +861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009200905322_AddSysReqTable.resx">
       <DependentUpon>202009200905322_AddSysReqTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009241832475_AddSoldToGame.resx">
+      <DependentUpon>202009241832475_AddSoldToGame.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

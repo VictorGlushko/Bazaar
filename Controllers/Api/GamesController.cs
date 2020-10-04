@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using Bazaar.Domain.Entities;
 using Bazaar.Dtos;
+using Bazaar.Migrations;
 using Bazaar.Repository;
 
 namespace Bazaar.Controllers.Api
@@ -39,6 +40,36 @@ namespace Bazaar.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return Mapper.Map<Game,GameDto>(game);
+        }
+
+        //GET /api/games?sortOrder=price
+        public IEnumerable<GameDto> GetGame(string sortOrder)
+        {
+            var games = _unitOfWork.Games.GetGames();
+
+            switch (sortOrder)
+            {
+                case "price":
+                {
+                    games = games.OrderBy(g => g.FinalPrice);
+                }break;
+
+                case "date":
+                {
+                    games = games.OrderBy(g => g.DateAdded);
+                }break;
+
+                default:
+                {
+                    throw new HttpResponseException(HttpStatusCode.NotFound);
+                } 
+                    
+            }
+
+            if (games == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return games.ToList().Select(Mapper.Map<Game, GameDto>);
         }
 
         // POST /api/game

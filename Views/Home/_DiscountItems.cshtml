@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Bazaar.Domain.Entities.Game>
+
+@foreach (var item in Model)
+{
+    
+    <a href=@Url.Action("Index","Game",new { slug = item.Slag }) class="item-link">
+        
+        <div class="discount-item">
+            <img src="@item.MediaResources.MainImagePath" alt="@item.Name" /> 
+            <div class="description-item">@item.Name</div>
+        </div>
+
+  
+
+    </a>
+
+}
+

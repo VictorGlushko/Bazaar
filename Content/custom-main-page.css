@@ -13,6 +13,19 @@ body {
               linear-gradient(245deg, hsla(96.53, 0%, 0%, 1) 100%, hsla(96.53, 0%, 0%, 0) 70%);
 }
 
+.tmp {
+    padding: 20px;
+    background: #337ab7;
+}
+
+
+
+
+.left-arrow, .right-arrow {
+    padding-top: 100px; /*нужное значение */
+    
+}
+
 .catalog {
     background: #F3F3F3;
     display: block;
@@ -23,7 +36,6 @@ body {
 
 
 .main-slider {
-   
     position: relative;
     background: #1d1f22;
     margin-bottom: 23px;
@@ -44,22 +56,20 @@ body {
 
 .left-column{
     background: #343A40;
-    height: 500px;
 }
 
 
 .right-column {
     background: #343A40;
     height: 500px;
-    
 }
 
 .block {
-   
     background: #343A40;
     height: 100px;
     color: #f3f3f3;
     margin: 15px 0px;
+    transition: 0.25s;
     display: flex;
 }
 
@@ -137,25 +147,32 @@ del {
     }
 
 .tabs-area {
-   
     width: 100%;
     display: flex;
-    
-    padding: 5px;
 }
 
-.tab a{
+.nav-link{
+    color: #f3f3f3;
+}
+
+    .nav-link:hover {
+        color: #f3f3f3;
+        color: #F6325C;
+    }
+
+.tabs-area a {
     font-family: 'Open sans', sans-serif;
     font-size: 15px;
     color: #f3f3f3;
     margin-left: 10px;
-    padding: 10px 10px;
+    padding: 5px 10px;
     transition: .2s linear;
     text-decoration: none;
 }
 
 
-.tab a:hover {
+.tabs-area a:hover {
+    text-decoration: none;
     color: #F6325C;
 }
 
@@ -166,6 +183,69 @@ del {
     background: #F6325C;
 }
 
+.current{
+    color: #F6325C !important;
+}
+.block:hover {
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(246,50,92,0.9);
+
+}
 a:hover {
     text-decoration: none;
+}
+.ganres {
+    color: #f6325c;
+    font-size: 20px;
+    margin: 10px 0px;
+}
+
+.ganre-item {
+    width: 100%;
+    height: 40px;
+    margin-left: 15px;
+    color: #f3f3f3;
+  
+    
+}
+
+.discount-item {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border: 1px solid black;
+    margin: 4px 0px;
+}
+
+
+
+
+
+.discount-header {
+    font-family: 'Open sans', sans-serif;
+    font-size: 15px;
+    color: #f3f3f3;
+    padding-top: 10px;
+   
+}
+
+.description-item {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+}
+
+.description-item {
+    font-family: 'Open sans', sans-serif;
+    font-size: 15px;
+    color: #f3f3f3;
+   
+}
+
+.fin-price {
+    font-size: 22px;
+    font-weight: bold;
 }

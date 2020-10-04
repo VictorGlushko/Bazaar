@@ -15,8 +15,9 @@ namespace Bazaar
                         "~/Scripts/bootstrap4.min.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap4.js"
-                       
+                        "~/Scripts/DataTables/dataTables.bootstrap4.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js"
+
                         ));
 
 

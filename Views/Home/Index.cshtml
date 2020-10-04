@@ -1,113 +1,148 @@
-﻿@model Bazaar.Domain.ViewModel.GamesViewModel
+﻿@using System.Web.UI.WebControls
+@model Bazaar.Domain.ViewModel.GamesViewModel
 
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "game-list"
+    };
 }
 
 
-<section class="main-slider">
 
-    <div class="container-slider">
+<div class="container mt-5">
+        <div class="row">
+            <div class="col mt-5">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            
+                            <div class="row">
+                                <div class="col-md-8 m-0 p-0">
+                                    <div class="slide-area"></div>
+                                    <img class="d-block w-100" src="../../Content/img/slider/BL3_1.jpg" alt="Second slide">
+                                    <div class="description-block">
+                                        <h3 class="ml-4">Los Angeles</h3>
+                                        <p class="ml-4">We had such a great time in LA!</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tmp">
+                                    sadfasd
+                                </div>
+                            </div>
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                          
+                        </div>
+                        <div class="carousel-item">
+                            
+                            <div class="row">
+                                <div class="col-md-8 m-0 p-0">
+                                    <div class="slide-area"></div>
+                                    <img class="d-block w-100" src="../../Content/img/slider/pubg-sale.jpg" alt="Second slide">
+                                    <div class="description-block">
+                                        <h3>Los Angeles</h3>
+                                        <p>We had such a great time in LA!</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 tmp">
+                                    fcvdsfd
+                                </div>
+                            </div>
 
-            
-            <div class="carousel-inner">
-                <!--<div class="carousel-item active">
-        <div class="slide-area">
-            <div class="row">
-                <div class="col-md-8">
-                    <img class="d-block w-100" src="../../Content/img/slider/BL3_1.jpg" alt="First slide">
-                    <div class="description-block">
-                        <h3>Los Angeles</h3>
-                        <p>We had such a great time in LA!</p>
+                        </div>
+                        <div class="carousel-item">
+                            
+                            <div class="row">
+                                <div class="col-md-8 m-0 p-0">
+                                    <div class="slide-area"></div>
+                                    <img class="d-block w-100" src="../../Content/img/slider/pubg-sale.jpg" alt="Second slide">
+                                    <div class="description-block">
+                                        <h3>Los Angeles</h3>
+                                        <p>We had such a great time in LA!</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-12 tmp">
+                                    fcvdsfd
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <img class="d-block w-100" src="../../Content/img/slider/BL3_1.jpg" alt="First slide">
-
-                    </div>
-                    <div class="row">
-                        <img class="d-block w-100" src="../../Content/img/slider/BL3_1.jpg" alt="First slide">
-                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    
+              
                 </div>
             </div>
         </div>
-
-    </div>-->
-
-                <div class="carousel-item active">
-
-
-
-                    <div class="slide-area"></div>
-                    <img class="d-block w-100" src="../../Content/img/slider/BL3_1.jpg" alt="Second slide">
-                    <div class="description-block">
-                        <h3>Los Angeles</h3>
-                        <p>We had such a great time in LA!</p>
-
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="slide-area"></div>
-                    <img class="d-block w-100" src="../../Content/img/slider/pubg-sale.jpg" alt="Third slide">
-                    <div class="description-block">
-                        <h3>Los Angeles</h3>
-                        <p>We had such a great time in LA!</p>
-
-                    </div>
-                </div>
-
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-
     </div>
 
-</section>
+  
 
-<div class="container">
+
+<div class="container mt-5">
 
 
     <div class="row">
-        
-        <div class="left-column col-md-4">
-         
-        </div>
-
         <div class="center col-md-8">
-            
-            <div class="tabs-area">
-
-                <div class="tab"><a href="">Новинки</a></div>
-                <div class="tab"><a href="">Лидеры продаж</a></div>
-                <div class="tab"><a href="">Ожидаемые</a></div>
-                
-
+            <div class="row">
+                <div class="tabs-area" id="qwe">
+                    @Ajax.RouteLink("Новинки", new { action = "OnSelectGamer", order = "date" }, ajaxOptions, new { @class = "tab current" })
+                    @Ajax.RouteLink("Лидеры продаж", new { action = "OnSelectGamer", order = "popular" }, ajaxOptions, new { @class = "tab" })
+                    @Ajax.RouteLink("Ожидаемые", new { action = "OnSelectGamer", order = "price" }, ajaxOptions, new { @class = "tab" })
+                </div>
             </div>
 
 
-       
             <div class="line"></div>
 
-            <div id="scrolList">
+            <div id="game-list">
                 @Html.Partial("_Items", Model.Games)
             </div>
+
         </div>
-        
+        <div class="col-md-4">
+            <div class="discount-header">Скидки
+            </div>
+            <div class="line"></div>
+            <div id="discount-list">
+                @Html.Partial("_DiscountItems", Model.DiscountGames)
+            </div>
+        </div>
 
 
     </div>
 
 </div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function() {
+
+            $(".tab").on("click", function () {
+                
+                $(".tab").not(this).removeClass("current");
+                $(this).addClass("current");
+            });
+
+        })
+
+    </script>
+
+}
+
 
