@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Policy
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,26 +10,67 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Admin area</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="@Url.Action("Index", "Home",new { area = "" })">Главная</a>
-            <a class="nav-item nav-link" href="@Url.Action("Index", "Games")">Игры</a>
-      
+
+
+    <div class="sidebar-container">
+        <div class="sidebar-logo">
+            <a href="@Url.RouteUrl(new { area ="",controller ="Home",action="Index"})">
+                BAZAR
+            </a>
+        </div>
+        <ul class="sidebar-navigation">
+            <li class="sidebar-header">
+                Админ-панель :
+            </li>
+           
+            <li>
+                <a href="@Url.Action("Index","Games")">
+                    <i class="fas fa-gamepad"></i> Игры
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-users"></i> Пользователи
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-pie"></i> Статистика
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-sliders-h"></i> Слайдер
+                </a>
+            </li>
+
+            <li>
+                <a href="@Url.RouteUrl(new { area ="",controller ="Home",action="Index"})">
+                    <i class="fa fa-home" aria-hidden="true"></i> Главная
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+
+    <div class="content-container">
+
+        <div class="container-fluid">
+
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Admin part</p>
+                </footer>
+            </div>
+          
+
         </div>
     </div>
-</nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Admin part</p>
-        </footer>
-    </div>
+
+
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)

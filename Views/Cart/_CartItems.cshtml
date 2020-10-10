@@ -1,0 +1,32 @@
+﻿@model Bazaar.Models.Cart
+
+@if (Model != null)
+{
+
+    if (Model.Lines.Count() > 0)
+    {
+        foreach (var item in Model.Lines)
+        {
+            <a class="dropdown-item" href="#">
+                <div class="cart-item">
+                    <div class="cart-item-name">@item.Game.Name</div>
+                    <div class="cart-item-price">@item.Game.FinalPrice руб</div>
+                </div>
+            </a> 
+        }
+
+        <div class="total-price">Итого: @Model.ComputeTotalValue() руб</div>
+        <a href="#" class="cart-btn">Перейти в карзину</a>
+    }
+    else
+    {
+        <div class="empty-cart">Ваша корзина пуста</div> 
+    }
+
+
+
+
+
+
+
+}

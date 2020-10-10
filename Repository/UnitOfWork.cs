@@ -13,6 +13,8 @@ namespace Bazaar.Repository
         public IGenreRepository Genres { get; }
         public IModeRepository Mode { get; set; }
         public IPlatformRepository Platform { get; }
+        public IFaqItemRepository FaqItem { get; }
+
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -21,6 +23,7 @@ namespace Bazaar.Repository
             Genres = new GenreRepository(context);
             Mode = new ModeRepository(context);
             Platform = new PlatformRepository(context);
+            FaqItem = new FaqItemRepository(context);
         }
 
         public void Complete()

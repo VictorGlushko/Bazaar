@@ -199,10 +199,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\Api\FaqController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FaqController.cs" />
     <Compile Include="Areas\Admin\Controllers\GamesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\GamesController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -318,13 +323,24 @@
     <Compile Include="Migrations\202009241832475_AddSoldToGame.designer.cs">
       <DependentUpon>202009241832475_AddSoldToGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010101715139_AddFaqItemTables.cs" />
+    <Compile Include="Migrations\202010101715139_AddFaqItemTables.designer.cs">
+      <DependentUpon>202010101715139_AddFaqItemTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010101944167_AddMaxLenToFaqItem.cs" />
+    <Compile Include="Migrations\202010101944167_AddMaxLenToFaqItem.designer.cs">
+      <DependentUpon>202010101944167_AddMaxLenToFaqItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\FaqItemRepository.cs" />
     <Compile Include="Repository\GameRepository.cs" />
     <Compile Include="Repository\GenreRepository.cs" />
+    <Compile Include="Repository\IFaqItemRepository.cs" />
     <Compile Include="Repository\IGameRepository.cs" />
     <Compile Include="Repository\IGenreRepository.cs" />
     <Compile Include="Repository\IModeRepository.cs" />
@@ -343,7 +359,10 @@
     <Content Include="Content\bootstrap4.min.css" />
     <Content Include="Content\brands.css" />
     <Content Include="Content\brands.min.css" />
+    <Content Include="Content\custom-admin-page.css" />
     <Content Include="Content\custom-carousel.css" />
+    <Content Include="Content\custom-cart.css" />
+    <Content Include="Content\custom-faq.css" />
     <Content Include="Content\custom-main-page.css" />
     <Content Include="Content\custom-nav.css" />
     <Content Include="Content\custom-new-game.css" />
@@ -598,6 +617,8 @@
     <Content Include="fonts\thumbgallery.ttf" />
     <Content Include="fonts\thumbgallery.woff" />
     <Content Include="fonts\BrutalType.ttf" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="fonts\RussoOne.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -758,10 +779,14 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Home\_GanresItems.cshtml" />
     <Content Include="Views\Home\_DiscountItems.cshtml" />
+    <Content Include="Views\Cart\_CartItems.cshtml" />
+    <Content Include="Views\Faq\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\Api\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Faq\" />
     <Folder Include="Content\posters\main\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Some\" />
@@ -864,6 +889,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009241832475_AddSoldToGame.resx">
       <DependentUpon>202009241832475_AddSoldToGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010101715139_AddFaqItemTables.resx">
+      <DependentUpon>202010101715139_AddFaqItemTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010101944167_AddMaxLenToFaqItem.resx">
+      <DependentUpon>202010101944167_AddMaxLenToFaqItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

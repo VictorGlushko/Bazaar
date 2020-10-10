@@ -53,9 +53,7 @@ iframe {
     color: #f3f3f3;
 }
 
-    .description a:hover {
-        color: #f6325c;
-    }
+  
 
 .nav-tabs .nav-link {
     border: none;
@@ -79,105 +77,27 @@ iframe {
     height: 100%;
 }
 
+
 .buy-button {
+    background: #262c37;
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px;
+    width: 100%;
+    line-height: 2.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: 0.4s;
+    color: #f3f3f3;
+
 }
 
-    .buy-button a {
-        position: relative;
-        display: inline-block;
-        height: 50px;
-        width: 100%;
-        padding: 10px 19px;
-        line-height: 2.2em;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: rgb(255, 255, 255, 0.4);
-        background: #262c37;
-        font-size: 15px;
-        transition: 0.5s;
-    }
-
-    .buy-button a:hover {
-        color: rgb(255, 255, 255,1);
-    }
-
-    .buy-button a span {
-        display: block;
-        position: absolute;
+    .buy-button:hover {
         background: #f6325c;
-    }
-
-        .buy-button a span:nth-child(1) {
-            left: 0;
-            bottom: 0;
-            width: 1px;
-            height: 100%;
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.3s;
-        }
-
-    .buy-button a:hover span:nth-child(1) {
-        transform: scaleY(1);
-        transform-origin: bottom;
-        transition: transform 0.3s;
-    }
-
-    .buy-button a span:nth-child(2) {
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 1px;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s;
-    }
-
-    .buy-button a:hover span:nth-child(2) {
-        transform: scaleX(1);
-        transform-origin: left;
-        transition: transform 0.3s;
-    }
-
-    .buy-button a span:nth-child(3) {
-        right: 0;
-        bottom: 0;
-        width: 1px;
-        height: 100%;
-        transform: scaleY(0);
-        transform-origin: top;
-        transition: transform 0.3s;
-        transition-delay: 0.3s;
-    }
-
-
-    .buy-button a:hover span:nth-child(3) {
-        transform: scaleY(1);
-        transform-origin: bottom;
-        transition: transform 0.3s;
-        transition-delay: 0.3s;
-    }
-
-
-    .buy-button a span:nth-child(4) {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 1px;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s;
-        transition-delay: 0.3s;
-    }
-
-    .buy-button a:hover span:nth-child(4) {
-        transform: scaleX(1);
-        transform-origin: left;
-        transition: transform 0.3s;
-        transition-delay: 0.3s;
+        color: #262c37;
     }
 
 .discount-box {
@@ -225,3 +145,5 @@ iframe {
     font-size: 20px;
     
 }
+
+

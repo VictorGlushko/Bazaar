@@ -4,8 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Игры</h2>
-
 <a class="btn btn-success" href="~/Admin/Games/New" style="margin-bottom:20px; margin-top:20px;">Добавить новую игру <i class="fa fa-plus" aria-hidden="true"></i> </a>
 <table id="example" class="table table-bordered table-hover">
     <thead>
@@ -26,9 +24,6 @@
 {
     <script>
         $(document).ready(function () {
-
-
-
             var t = $('#example').DataTable({
                 ajax: {
                     url: "/api/games",

@@ -17,8 +17,13 @@ namespace Bazaar.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller ="Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            context.MapRoute(
+                "Admin_WebApiRoute",
+                "Admin/Api/{controller}/{id}",
+                new { id = UrlParameter.Optional });
         }
     }
 }

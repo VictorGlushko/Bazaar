@@ -29,6 +29,8 @@ namespace Bazaar.Models
         public DbSet<MediaResources> MediaResources { get; set; }
         public DbSet<SystemRequirements> SystemRequirements { get; set; }
 
+        public DbSet<FaqItem> FaqItems { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -13,6 +13,7 @@ namespace Bazaar.Repository
         IGenreRepository Genres { get; }
         IModeRepository Mode { get;  }
         IPlatformRepository Platform { get; }
+        IFaqItemRepository FaqItem { get; }
         void Complete();
 
     }

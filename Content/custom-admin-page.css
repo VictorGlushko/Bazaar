@@ -1,0 +1,82 @@
+﻿@font-face {
+    font-family: "Russo One";
+    src: url("../fonts/RussoOne.ttf");
+}
+
+.sidebar-container {
+    position: fixed;
+    width: 220px;
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #1a1a1a;
+ 
+}
+
+.sidebar-header {
+    
+    font-size: 20px;
+    padding: 10px;
+    color: #d3d3d3;
+   
+}
+
+.sidebar-logo {
+    font-family: "Russo One";
+    padding: 13px 16px;
+    font-size: 20px;
+    background-color: #343A40;
+    color: #1a1a1a;
+    height: 55px;
+
+}
+
+    .sidebar-logo a {
+        text-decoration: none;
+        outline: none;
+        color: #F6325C;
+        
+    }
+
+
+    .sidebar-navigation {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: relative;
+    }
+
+    .sidebar-navigation li {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        line-height: 20px;
+    }
+
+        .sidebar-navigation li a {
+            padding: 10px 15px 10px 30px;
+            display: block;
+            color: #d3d3d3;
+            transition: 0.2s;
+        }
+            .sidebar-navigation li a i {
+                margin-right: 5px;
+            }
+
+
+
+            .sidebar-navigation li a:active,
+            .sidebar-navigation li a:hover,
+            .sidebar-navigation li a:focus {
+                text-decoration: none;
+                outline: none;
+            }
+            .sidebar-navigation li a:hover {
+                background: #33383e;
+            }
+
+            .content-container {
+                padding-left: 220px;
+            }
+

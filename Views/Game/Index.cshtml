@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+       AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "count-cart-item"
+    };
 }
 
 
@@ -84,15 +91,8 @@
 
                                 </div>
                                 <div class="col-xl-6 col-lg-12">
-                                    <div class="buy-button">
-                                        <a href="">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            В корзину&nbsp
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
+                                    <div class="">
+                                        @Ajax.RouteLink("В корзину", new { controller = "Cart", action = "AddToCart", id = Model.Id }, ajaxOptions, new { @class = "buy-button" })
                                     </div>
 
                                 </div>
@@ -245,9 +245,32 @@
     @Scripts.Render("~/scripts/jquery.mb.gallery.min.js")
     <script>
         var myGallery = jQuery("#thumbGallery").mbGallery();
-        $('#myTab a').on('click', function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
+        $('#myTab a').on('click',
+            function(e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+
+
+        $(function () {  
+            $(".dropdown").click(function () {  
+                
+                $.ajax({  
+                    type: "GET",  
+                    url: '@Url.RouteUrl(new { controller ="Cart", action = "GetCartItems"})',
+                    success: function () {  
+                        // alert("Data has been added successfully.");  
+                     
+                    },  
+                    error: function () {  
+                        alert("Error while inserting data");  
+                    }  
+                });  
+                return false;  
+            });  
+        });  
+
+
+
     </script>
 }

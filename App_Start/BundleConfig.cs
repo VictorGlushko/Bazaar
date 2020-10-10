@@ -40,7 +40,9 @@ namespace Bazaar
                       "~/Content/custom-nav.css",
                       "~/Content/custom-carousel.css",
                       "~/Content/custom-game-page.css",
-                      "~/Content/jquery.mb.gallery.min.css"));
+                      "~/Content/jquery.mb.gallery.min.css",
+                      "~/Content/custom-cart.css",
+                      "~/Content/custom-faq.css"));
 
 
             bundles.Add(new ScriptBundle("~/Content/admin-css").Include(
@@ -52,7 +54,8 @@ namespace Bazaar
                     "~/Content/fontawesome-all.css",
                     "~/Content/custom-nav.css",
                     "~/Content/custom-carousel.css",
-                    "~/Content/custom-new-game.css"));
+                    "~/Content/custom-new-game.css",
+                    "~/Content/custom-admin-page.css"));
                 
 
 
