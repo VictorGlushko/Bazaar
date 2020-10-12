@@ -1,4 +1,6 @@
-﻿
+﻿@model IEnumerable<Bazaar.Areas.Admin.ViewModel.FaqItemViewModel>
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,33 +9,41 @@
 <h2>Faq</h2>
 
 
-<div class="container">
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col m-0 p-0">
+                <div class="faq-header">
 
-    <h1 class="faq-header">FAQ Section</h1>
-    <div class="acc">
-        <h3>Question1</h3>
-        <div class="content">
-            <div class="content-inner">
-                <p>Answer1</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-header-title">Добро пожаловать в службу поддержки Bazar!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-header-subtitle">Как мы можем вам помочь?</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
     </div>
-    <div class="acc">
-        <h3>Question2</h3>
-        <div class="content">
-            <div class="content-inner">
-                <p>Answer2</p>
-            </div>
-        </div>
-    </div>
-    <div class="acc">
-        <h3>Question3</h3>
-        <div class="content">
-            <div class="content-inner">
-                <p>Answer3</p>
-            </div>
-        </div>
-    </div>
+</section>
+
+
+
+<div class="container">
+    <div class="faq-title">Популярные вопросы :</div>
+    @Html.Partial("_FaqItem", Model)
+</div>
+   
+
+
+   
+
 
 
 
@@ -41,10 +51,10 @@
 
 @section scripts
 {
-    
+
     <script>
-        $(document).ready(function() {
-            $('.acc h3').click(function() {
+        $(document).ready(function () {
+            $('.acc h3').click(function () {
                 $(this).next('.content').slideToggle();
                 $(this).parent().toggleClass('active');
                 $(this).parent().siblings().children('.content').slideUp();
@@ -53,7 +63,7 @@
         });
     </script>
 
-    
+
 
 }
 

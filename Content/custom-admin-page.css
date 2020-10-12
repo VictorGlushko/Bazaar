@@ -80,3 +80,13 @@
                 padding-left: 220px;
             }
 
+input, select, textarea {
+    max-width: none;
+}
+.field-validation-error {
+    color: #f6325c;
+}
+
+.input-validation-error {
+    border: 1px solid #f6325c;
+}

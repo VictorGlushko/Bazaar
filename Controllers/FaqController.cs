@@ -3,15 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using Bazaar.Areas.Admin.ViewModel;
+using Bazaar.Domain.Dtos;
+using Bazaar.Domain.Entities;
+using Bazaar.Repository;
 
 namespace Bazaar.Controllers
 {
     public class FaqController : Controller
     {
+
+        private readonly IUnitOfWork _unitOfWork;
+
+        public FaqController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         // GET: Faq
         public ActionResult Index()
         {
-            return View();
+            var viewmodel = _unitOfWork.FaqItem.GetFaqItems().Select(Mapper.Map<FaqItem, FaqItemViewModel>).OrderBy(f =>f.Order);
+
+            if (viewmodel == null)
+                return HttpNotFound();
+
+            return View("Index",viewmodel);
         }
     }
 }

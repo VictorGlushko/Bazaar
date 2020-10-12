@@ -11,14 +11,18 @@ namespace Bazaar
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui.js",
-                        "~/Scripts/jquery.validate*",
                         "~/Scripts/bootstrap4.min.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/dataTables.bootstrap4.js",
                         "~/Scripts/jquery.unobtrusive-ajax.min.js"
-
                         ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/jquery.validate*"
+            ));
+
 
 
 

@@ -1,0 +1,46 @@
+﻿@model Bazaar.Areas.Admin.ViewModel.FaqItemViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.FaqItemId == 0)
+{
+    <h2>Новый вопрос</h2>
+}
+else
+{
+    <h2>Редактировать вопрос</h2>
+}
+
+
+
+@using (Html.BeginForm("Save", "Faq"))
+{
+    <div class="form-group">
+        @Html.LabelFor( f =>f.Order)
+        @Html.TextBoxFor( f =>f.Order,new { @class = "form-control"})
+        @Html.ValidationMessageFor(f =>f.Order)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Question)
+        @Html.TextBoxFor(f => f.Question, new { @class = "form-control" })
+        @Html.ValidationMessageFor(f => f.Question)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Answer)
+        @Html.TextAreaFor(f => f.Answer, new { @class = "form-control" })
+        @Html.ValidationMessageFor(f => f.Answer)
+    </div>
+
+    @Html.HiddenFor(f =>f.FaqItemId);
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
+}

@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\ViewModel\FaqItemViewModel.cs" />
     <Compile Include="Controllers\Api\FaqController.cs" />
     <Compile Include="Areas\Admin\Controllers\FaqController.cs" />
     <Compile Include="Areas\Admin\Controllers\GamesController.cs" />
@@ -330,6 +331,10 @@
     <Compile Include="Migrations\202010101944167_AddMaxLenToFaqItem.cs" />
     <Compile Include="Migrations\202010101944167_AddMaxLenToFaqItem.designer.cs">
       <DependentUpon>202010101944167_AddMaxLenToFaqItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010111959356_ChangeTypeOfOrderInFaqTable.cs" />
+    <Compile Include="Migrations\202010111959356_ChangeTypeOfOrderInFaqTable.designer.cs">
+      <DependentUpon>202010111959356_ChangeTypeOfOrderInFaqTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -619,6 +624,9 @@
     <Content Include="fonts\BrutalType.ttf" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="fonts\RussoOne.ttf" />
+    <Content Include="Areas\Admin\Views\Faq\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Faq\FaqForm.cshtml" />
+    <Content Include="fonts\MontserratRegular.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -781,12 +789,12 @@
     <Content Include="Views\Home\_DiscountItems.cshtml" />
     <Content Include="Views\Cart\_CartItems.cshtml" />
     <Content Include="Views\Faq\Index.cshtml" />
+    <Content Include="Views\Faq\_FaqItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\Api\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Faq\" />
     <Folder Include="Content\posters\main\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Some\" />
@@ -895,6 +903,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010101944167_AddMaxLenToFaqItem.resx">
       <DependentUpon>202010101944167_AddMaxLenToFaqItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010111959356_ChangeTypeOfOrderInFaqTable.resx">
+      <DependentUpon>202010111959356_ChangeTypeOfOrderInFaqTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

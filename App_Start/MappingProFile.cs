@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using Bazaar.Areas.Admin.ViewModel;
 using Bazaar.Domain.Dtos;
 using Bazaar.Domain.Entities;
 using Bazaar.Dtos;
@@ -18,6 +19,8 @@ namespace Bazaar.App_Start
             Mapper.CreateMap<GameDto, Game>();
             Mapper.CreateMap<FaqItem, FaqItemDto>();
             Mapper.CreateMap<FaqItemDto, FaqItem>();
+            Mapper.CreateMap<FaqItemViewModel, FaqItem>();
+            Mapper.CreateMap<FaqItem, FaqItemViewModel>();
         }
     }
 }

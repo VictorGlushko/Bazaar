@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Bazaar.Areas.Admin.ViewModel.FaqItemViewModel>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="acc">
+        <h3>@item.Question</h3>
+        <div class="content">
+            <div class="content-inner">
+                <p>@item.Answer</p>
+            </div>
+        </div>
+    </div>
+}
