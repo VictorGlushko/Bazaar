@@ -1,0 +1,181 @@
+﻿@using Bazaar.Domain.Entities
+@model Bazaar.Domain.ViewModel.CatalogViewModel 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "products-list"
+    };
+
+}
+
+
+
+<div class="container">
+
+    <div class="catalog-header">Каталог продукции</div>
+
+        @using (Ajax.BeginForm("SetFilter", "Catalog", ajaxOptions, new {enctype = "multipart/form-data", Id = "context-form"}))
+        {
+
+            <div class="row">
+                <div class="col">
+                    <div class="catalog-search">
+                        <div class="search-text"><i class="fas fa-search"></i> </div>
+                        <div class="search-input"> <input/> </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-xl-8">
+                    <div class="order-panel">
+                        <div class="number-of-games">Найдено : <span class="">@Model.Games.Count()</span></div>
+
+                        <div class="order-text">Сортировать по :</div>
+
+                        <div class="radio-container">
+
+                            <input type="radio" name="Sorting" value="price" onchange="$('#context-form').submit();" id="option1"/>
+                            <label for="option1" class="order-button">
+                                Цене
+                            </label>
+
+                            <input type="radio" name="Sorting" value="date" onchange="$('#context-form').submit();" id="option2" class="order-button"/>
+                            <label for="option2" class="order-button">
+                                Дате выхода
+                            </label>
+
+                            <input type="radio" name="Sorting" value="rating" checked onchange="$('#context-form').submit();" id="option3" class="order-button"/>
+                            <label for="option3" class="order-button">
+                                Рейтингу
+                            </label>
+
+                            <input type="radio" name="Sorting"  value="discount" onchange="$('#context-form').submit();" id="option4"/>
+                            <label for="option4" class="order-button">
+                                Скидке
+                            </label>
+
+                        </div>
+
+                        <div class="arrow-check">
+                            <input type="checkbox" name="Order" onchange="$('#context-form').submit();" value="DESC" id="checkbox-arrow"/>
+                            <label for="checkbox-arrow">
+                                <div class="arrow-4">
+                                    <span class="arrow-4-left"></span>
+                                    <span class="arrow-4-right"></span>
+                                </div>
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <div id="products-list">
+
+                        @Html.Partial("../Home/_Items", Model.Games);
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-xl-4">
+                    <div class="filte-blok">
+                        <div class="filter-head w-100 text-center">Цена</div>
+
+                        <div class="polzunok-container">
+                            <div class="polzunok"></div>
+                            <div class="polzunok-inputs">
+                                <input readonly type="text" class="polzunok-input-left" name="MinPrice" />
+                                <input readonly type="text" class="polzunok-input-right" name="MaxPrice" />
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="filte-blok d-flex flex-wrap">
+                        <div class="filter-head w-100 text-center">Жанры</div>
+
+                        @foreach (var item in Model.Genres)
+                        {
+
+                            <div class="checkbox-wrapper">
+                                <input onchange="$('#context-form').submit();" name="Genres" type="checkbox" value="@item.Name" id="checkbox-@item.Name">
+                                <label for="checkbox-@item.Name">
+                                    @item.Name
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="filte-blok flex-column">
+                        <div class="filter-head w-100 text-center">Платформы</div>
+                        @foreach (var item in Model.Platforms)
+                        {
+                            <div class="checkbox-wrapper">
+                                <input onchange="$('#context-form').submit();" name="Platforms" type="checkbox" value="@item.Name" id="checkbox-@item.Name">
+                                <label for="checkbox-@item.Name">
+                                    @item.Name
+                                </label>
+                            </div>
+
+                        }
+
+                    </div>
+
+                    <div class="filte-blok flex-column">
+                        <div class="filter-head w-100 text-center">Режимы игры</div>
+                        @foreach (var item in Model.Modes)
+                        {
+
+                            <div class="checkbox-wrapper">
+                                <input onchange="$('#context-form').submit();" name="Modes" type="checkbox" value="@item.Name" id="checkbox-@item.Name">
+                                <label for="checkbox-@item.Name">
+                                    @item.Name
+                                </label>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(".arrow-4").click(function() {
+            $(this).toggleClass("open");
+
+        });
+
+        $(".polzunok").slider({
+            min: @Model.MinPrice,
+            max: @Model.MaxPrice,
+            values: [@Model.MinPrice, @Model.MaxPrice],
+            range: true,
+            animate: "fast",
+            slide : function(event, ui) {    
+                $(".polzunok-input-left").val(ui.values[ 0 ]);   
+                $(".polzunok-input-right").val(ui.values[1]);
+               
+            }    ,
+            stop: function(event, ui) {
+                $('#context-form').submit();
+            }
+        });
+        $(".polzunok-input-left").val($(".polzunok").slider("values", 0));
+        $(".polzunok-input-right").val($(".polzunok").slider("values", 1));
+     
+    </script>
+    
+
+}

@@ -1,16 +1,8 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 body {
-    background:
-              -webkit-linear-gradient(88deg, hsla(89.93, 0%, 16.02%, 1) 0%, hsla(89.93, 0%, 16.02%, 0) 65%),
-              -webkit-linear-gradient(315deg, hsla(330.67, 0%, 12.8%, 1) 0%, hsla(330.67, 0%, 12.8%, 0) 70%),
-              -webkit-linear-gradient(135deg, hsla(347.14, 44.69%, 18.32%, 1) 15%, hsla(347.14, 44.69%, 18.32%, 0) 80%),
-              -webkit-linear-gradient(205deg, hsla(96.53, 0%, 0%, 1) 100%, hsla(96.53, 0%, 0%, 0) 70%);
-    background:
-              linear-gradient(2deg, hsla(89.93, 0%, 16.02%, 1) 0%, hsla(89.93, 0%, 16.02%, 0) 65%),
-              linear-gradient(135deg, hsla(330.67, 0%, 12.8%, 1) 0%, hsla(330.67, 0%, 12.8%, 0) 70%),
-              linear-gradient(315deg, hsla(347.14, 44.69%, 18.32%, 1) 15%, hsla(347.14, 44.69%, 18.32%, 0) 80%),
-              linear-gradient(245deg, hsla(96.53, 0%, 0%, 1) 100%, hsla(96.53, 0%, 0%, 0) 70%);
+    background: rgb(47,47,47);
+    background: linear-gradient(270deg, rgba(47,47,47,1) 0%, rgba(72,73,98,1) 51%, rgba(37,37,37,1) 100%);
 }
 
 .tmp {
@@ -64,39 +56,48 @@ body {
     height: 500px;
 }
 
-.block {
-    background: #343A40;
+.container-fluid {
+    max-width: 1024px;
+}
+.product-card {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background: var(--hl-card-dark);
     height: 100px;
     color: #f3f3f3;
     margin: 15px 0px;
     transition: 0.25s;
     display: flex;
+    align-items: center;
+    font-family: 'Russo One', sans-serif;
 }
+    .product-card:hover {
+        text-decoration: none;
+        box-shadow: 0 0 10px rgba(246,50,92,0.9);
+    }
 
-.catalog-item-img{
+.product-card-img{
     height: 100%;
-    max-height:100%;
-    width:auto;
 }
 
-img{
-    height:100%;
+.product-card-img img {
+    height: 100%;
 }
 
 
-.catalog-item-content {
+.product-card-content {
     padding: 10px;
-    font-family: 'Russo One', sans-serif;
+    flex-grow: 1;
 }
-.catalog-item-prace {
+
+.product-card-prace {
     padding: 10px;
-    font-family: 'Russo One', sans-serif;
     margin-left: auto;
     margin-top: 5px;
-    margin-right: 5px; 
-    
+    margin-right: 5px;
+    min-width: 125px;
 }
-.ganre {
+.product-card-ganre {
     display: flex;
     align-items: flex-end;
     margin-top: 1em;
@@ -104,17 +105,15 @@ img{
     font-size: 12px;
 }
 
-.original-price {
+.product-card-original-price {
     text-align: center;
     display: inline-block;
     padding: 0 5px;
-
     border: 1px solid #343A40;
-   
 }
 
 
-.discount {
+.product-card-discount {
     background: #F6325C;
     border: 1px solid #343A40;
     text-align: right;
@@ -122,10 +121,10 @@ img{
     padding: 0 5px;
 }
 
-.final-price {
+.product-card-final-price {
     border: 1px solid #343A40;
     padding: 0 5px;
-    margin-top: 7px; 
+    margin-top: 7px;
     text-align: right;
     font-size: 20px;
 }
@@ -186,11 +185,7 @@ del {
 .current{
     color: #F6325C !important;
 }
-.block:hover {
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(246,50,92,0.9);
 
-}
 a:hover {
     text-decoration: none;
 }
@@ -212,21 +207,26 @@ a:hover {
 .discount-item {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 150px;
     border: 1px solid black;
-    margin: 4px 0px;
+    margin: 10px 0px;
 }
 
+.discount-item-img {
+    width: 100%;
+    height: 100%;
+}
 
-
-
+.discount-item-img img {
+    width: 100%;
+    height: 100%;
+}
 
 .discount-header {
     font-family: 'Open sans', sans-serif;
     font-size: 15px;
     color: #f3f3f3;
     padding-top: 10px;
-   
 }
 
 .description-item {
@@ -249,3 +249,15 @@ a:hover {
     font-size: 22px;
     font-weight: bold;
 }
+
+
+@media (max-width: 720px) {
+    .product-card {
+        height: 80px;
+        font-size: 14px;
+    }
+
+    .product-card-ganre {
+        display: none;
+    }
+    }

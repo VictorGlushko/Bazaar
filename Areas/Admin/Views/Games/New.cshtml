@@ -5,11 +5,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-<div class="jumbotron">
-    <h1>Add new game</h1>
-    <p>Just add new game...</p>
+<div class="header-block">
+    <div class="jumbotron">
+        <h1>Новый товар</h1>
+        <p>Здесь вы можете добавить новую игру в ваш магазин</p>
+    </div>
 </div>
+
+
 
 <table class="model-state">
     @foreach (var item in ViewContext.ViewData.ModelState)
@@ -44,7 +47,7 @@
 
     <div class="row">
         <div class="col">
-           
+
             <div class="form-group">
                 @Html.LabelFor(m => m.OriginalPrice)
                 @Html.TextBoxFor(m => m.OriginalPrice, new { @class = "form-control", @Value = "1000" })
@@ -53,73 +56,47 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.FinalPrice)
-                @Html.TextBoxFor(m => m.FinalPrice, new { @class = "form-control", @Value = "500"  })
+                @Html.TextBoxFor(m => m.FinalPrice, new { @class = "form-control", @Value = "500" })
                 @Html.ValidationMessageFor(m => m.FinalPrice)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.Publisher)
-                @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", @Value = "Publisher"  })
-                @Html.ValidationMessageFor(m => m.Publisher)
             </div>
 
             <div class="form-group">
+                @Html.LabelFor(m => m.Publisher)
+                @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", @Value = "Publisher" })
+                @Html.ValidationMessageFor(m => m.Publisher)
+            </div>
+
+
+
+        </div>
+        <div class="col">
+            <div class="form-group">
                 @Html.LabelFor(m => m.Developer)
-                @Html.TextBoxFor(m => m.Developer, new { @class = "form-control", @Value = "Developer"  })
+                @Html.TextBoxFor(m => m.Developer, new { @class = "form-control", @Value = "Developer" })
                 @Html.ValidationMessageFor(m => m.Developer)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Language)
-                @Html.TextBoxFor(m => m.Language, new { @class = "form-control", @Value = "Русский"  })
+                @Html.TextBoxFor(m => m.Language, new { @class = "form-control", @Value = "Русский" })
                 @Html.ValidationMessageFor(m => m.Language)
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.ReleaseDate)
-                @Html.TextBoxFor(m => m.ReleaseDate, "{0:dd.mm.yy}", new { @class = "form-control datepicker" })
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                @Html.LabelFor(m => m.SystemRequirements.OperatingSystem)
-                @Html.TextBoxFor(m => m.SystemRequirements.OperatingSystem, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.SystemRequirements.OperatingSystem)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.SystemRequirements.Processor)
-                @Html.TextBoxFor(m => m.SystemRequirements.Processor, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.SystemRequirements.Processor)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.SystemRequirements.RAM)
-                @Html.TextBoxFor(m => m.SystemRequirements.RAM, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.SystemRequirements.RAM)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.SystemRequirements.VideoCard)
-                @Html.TextBoxFor(m => m.SystemRequirements.VideoCard, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.SystemRequirements.VideoCard)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.SystemRequirements.HDD)
-                @Html.TextBoxFor(m => m.SystemRequirements.HDD, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.SystemRequirements.HDD)
-            </div>
+           
 
+            <div class="form-group">
+                <label for="date-input">Дата релиза</label>
+                <input name="ReleaseDate" class="form-control" type="date" value="2011-08-19" id="date-input">
+            </div>
         </div>
 
     </div>
 
 
-   
 
 
-   
+
+
 
     <div class="form-group">
         @Html.LabelFor(m => m.MediaResources.VideoLink)
@@ -225,7 +202,6 @@
 
 
 
-
     <div class="form-group">
 
         <button type="button" class="btn btn-primary btn-icon" data-toggle="modal" data-target="#ganresModal">
@@ -260,6 +236,54 @@
         <input type='file' multiple id='fileUpload' name="screens" />
     </div>
 
+    <div class="row justify-content-center">
+        <h1>Системные требования:</h1> 
+       
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div>Минимальные :</div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.OperatingSystem)
+                @Html.TextBoxFor(m => m.SystemRequirements.OperatingSystem, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.SystemRequirements.OperatingSystem)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.Processor)
+                @Html.TextBoxFor(m => m.SystemRequirements.Processor, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.SystemRequirements.Processor)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.RAM)
+                @Html.TextBoxFor(m => m.SystemRequirements.RAM, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.SystemRequirements.RAM)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.VideoCard)
+                @Html.TextBoxFor(m => m.SystemRequirements.VideoCard, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.SystemRequirements.VideoCard)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SystemRequirements.HDD)
+                @Html.TextBoxFor(m => m.SystemRequirements.HDD, new {@class = "form-control"})
+                @Html.ValidationMessageFor(m => m.SystemRequirements.HDD)
+            </div>
+
+        </div>
+
+        <div class="col">
+
+        </div>
+    </div>
+
+
+
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
@@ -276,16 +300,9 @@
     <script>
         $(document).ready(function () {
 
-            $("input[name='ReleaseDate']").datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-60:+0",
-                dateFormat: "dd.mm.yy",
-                monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-                dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+            $('#datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
             });
-
 
 
             $('html').on('click', '.ganreitem', function () {

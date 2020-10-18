@@ -10,9 +10,7 @@
 
 </head>
 <body>
-
-
-    <div class="sidebar-container">
+<div class="sidebar-container">
         <div class="sidebar-logo">
             <a href="@Url.RouteUrl(new { area ="",controller ="Home",action="Index"})">
                 BAZAR
@@ -60,18 +58,14 @@
 
     <div class="content-container">
 
-        <div class="container-fluid">
-
-            <div class="container body-content">
+            <div class="container p-5">
                 @RenderBody()
                 <hr />
                 <footer>
                     <p>&copy; @DateTime.Now.Year - Admin part</p>
                 </footer>
             </div>
-          
 
-        </div>
     </div>
 
 

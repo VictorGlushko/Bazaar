@@ -1,9 +1,7 @@
-﻿@font-face {
-    font-family: "Russo One";
-    src: url("../fonts/RussoOne.ttf");
-}
+﻿
 
 .sidebar-container {
+    font-family: 'Montserrat', sans-serif;
     position: fixed;
     width: 220px;
     height: 100%;

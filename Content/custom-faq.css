@@ -1,7 +1,4 @@
-﻿@font-face {
-    font-family: "Montserrat";
-    src: url("../fonts/MontserratRegular.otf");
-}
+﻿
 .faq-header {
     font-family: "Russo One";
     background:;
@@ -38,7 +35,7 @@
 .faq-title {
     padding: 40px;
     font-size: 25px;
-    font-family: "Russo One";
+    font-family: "Russo One", sans-serif;
     color: #0094E9;
     text-align: center;
 }

@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\GamesController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -367,6 +368,7 @@
     <Content Include="Content\custom-admin-page.css" />
     <Content Include="Content\custom-carousel.css" />
     <Content Include="Content\custom-cart.css" />
+    <Content Include="Content\custom-catalog.css" />
     <Content Include="Content\custom-faq.css" />
     <Content Include="Content\custom-main-page.css" />
     <Content Include="Content\custom-nav.css" />
@@ -790,6 +792,8 @@
     <Content Include="Views\Cart\_CartItems.cshtml" />
     <Content Include="Views\Faq\Index.cshtml" />
     <Content Include="Views\Faq\_FaqItem.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Catalog\_catalogItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,24 +1,18 @@
-﻿body {
-    padding-top: 0px;
-    padding-bottom: 20px;
+﻿@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/MontserratRegular.otf");
+}/* font-family: 'Montserrat', sans-serif; */
+
+
+@font-face {
+    font-family: "Russo One";
+    src: url("../fonts/RussoOne.ttf");
+}/* font-family: "Russo One", sans-serif; */
+
+:root {
+    --hl: #F6325C;
+    --hl-blue: #0094E9;
+    --hl-dark: #303031;
+    --hl-card-dark: #343A40;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}

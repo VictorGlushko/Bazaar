@@ -1,0 +1,322 @@
+﻿.catalog-header {
+    font-family: "Russo One", sans-serif;
+    margin-top: 20vh;
+    font-size: 6vh;
+    color: #bfbfbf;
+}
+
+
+.catalog-search {
+    margin: 30px 0 15px;
+    display: flex;
+    width: 100%;
+}
+
+
+.search-text {
+    height: 30px;
+    border: 1px solid #bfbfbf;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 10%;
+    color: #F6325C;
+}
+
+.search-input {
+    background: #E9E9E9;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width:100%;
+}
+
+    .search-input input {
+        font-family: 'Montserrat', sans-serif;
+        height: 30px;
+        width: 100%;
+        background: #E9E9E9;
+        padding-left: 20px;
+        border: 1px solid #bfbfbf;
+        text-align: left;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+
+.order-panel {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    display: flex;
+    color: #9A9DA0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.order-panel input[type="radio"] {
+    display: none
+}
+
+
+.order-button {
+    margin-bottom: 0;
+    padding: 4px 10px;
+    background: #343A40;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + .order-button {
+    background: var(--hl);
+    color: #343a40;
+}
+
+.number-of-games {
+    margin-right:10px;
+}
+
+.order-text {
+    margin-right: 15px;
+}
+
+.filte-blok {
+    font-family: 'Montserrat', sans-serif;
+    background: #a6a6a6;
+    padding: 15px 25px 30px;
+    margin-bottom: 10px;
+    letter-spacing: 0px;
+}
+
+    .filte-blok label {
+        margin-bottom: 0;
+    }
+
+
+    .checkbox-wrapper {
+        width: 150px;
+        display: flex;
+        justify-items: center;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .checkbox-wrapper input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #ddd;
+        cursor: pointer;
+        border: 1px solid #a5a5a5;
+        position: relative;
+        margin-right: 6px;
+        transition: 0.4s;
+        outline: none;
+    }
+        .checkbox-wrapper input[type="checkbox"]:after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 14px;
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transform: translate(-50%, -50%) rotateZ(40deg) scale(0.1);
+            opacity: 0;
+            top: 40%;
+            left: 50%;
+            transition: 0.4s;
+
+        }
+        .checkbox-wrapper input[type="checkbox"]:hover {
+            background-color: #708090;
+        }
+
+.checkbox-wrapper input[type="checkbox"]:checked {
+    background-color: var(--hl);
+}
+    .checkbox-wrapper input[type="checkbox"]:checked:after {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+    }
+
+    .checkbox-wrapper label:hover {
+        cursor: pointer;
+    }
+    /*.checkmark {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: #ddd;
+    border-radius: 3px;
+    position: relative;
+    transition: background-color 0.4s;
+}
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 13px;
+        border-right: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateZ(40deg) scale(10);
+        opacity: 0;
+        transition: all 0.4s;
+    }
+
+.check:checked ~.checkmark{
+    background-color: #08dd68;
+}
+
+    .check:checked ~ .checkmark::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotateZ(40deg) scale(1);
+
+    }*/
+    .filter-head {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+#checkbox-arrow {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.arrow-check label {
+    margin: 0;
+}
+
+.arrow-4 {
+    margin-left: 10px;
+    position: relative;
+    cursor: pointer;
+    width: 33px;
+    height: 20px;
+}
+
+.arrow-4-left {
+    position: absolute;
+    background-color: transparent;
+    top: 10px;
+    left: 0;
+    width: 20px;
+    height: 5px;
+    display: block;
+    transform: rotate(35deg);
+    float: right;
+    border-radius: 2px;
+}
+
+    .arrow-4-left:after {
+        content: "";
+        background-color: var(--hl);
+        width: 20px;
+        height: 5px;
+        display: block;
+        float: right;
+        border-radius: 6px 10px 10px 6px;
+        transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+        z-index: -1;
+    }
+
+.arrow-4-right {
+    position: absolute;
+    background-color: transparent;
+    top: 10px;
+    left: 12px;
+    width: 20px;
+    height: 5px;
+    display: block;
+    transform: rotate(-35deg);
+    float: right;
+    border-radius: 2px;
+}
+
+    .arrow-4-right:after {
+        content: "";
+        background-color: var(--hl);
+        width: 20px;
+        height: 5px;
+        display: block;
+        float: right;
+        border-radius: 10px 6px 6px 10px;
+        transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+        z-index: -1;
+    }
+
+.open .arrow-4-left:after {
+    transform-origin: center center;
+    transform: rotate(-70deg);
+}
+
+.open .arrow-4-right:after {
+    transform-origin: center center;
+    transform: rotate(70deg);
+}
+
+
+
+.polzunok-container .ui-slider {
+    position: relative;
+    background: #343a40;
+    height: 2px;
+    border: 0px;
+    position: relative;
+}
+
+    .polzunok-container .ui-slider .ui-slider-range {
+        background: var(--hl);
+    }
+.polzunok-container .ui-slider .ui-slider-handle {
+    position: absolute;
+   
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #9a9da0;
+    top: -6px;
+    background: #FFF;
+
+}
+
+.polzunok-container {
+    width: 100%;
+}
+.polzunok {
+    margin-bottom: 20px;
+}
+
+.polzunok-inputs input {
+    font-family: 'Montserrat', sans-serif;
+    width: 120px;
+    border: 1px solid #9a9da0;
+    height: 24px;
+    padding: 13px;
+}
+.polzunok-inputs {
+    
+    display: flex;
+    justify-content: space-between;
+}

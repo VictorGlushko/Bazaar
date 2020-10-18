@@ -63,7 +63,7 @@ iframe {
 
     .nav-tabs .nav-link.active {
         background-color: transparent;
-        color: #F6325C;
+        color: var(--hl);
     }
 
 .sys-req-item {
@@ -96,7 +96,7 @@ iframe {
 }
 
     .buy-button:hover {
-        background: #f6325c;
+        background: var(--hl);
         color: #262c37;
     }
 
@@ -106,11 +106,11 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #f6325c;
+    border: 1px solid var(--hl);
 }
 
 .detail-item > *:hover {
-    border-left: 1px solid #f6325c;
+    border-left: 1px solid var(--hl);
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
 
@@ -118,7 +118,7 @@ iframe {
     position: relative;
     padding: 16px 0;
     line-height: 12px;
-    border-bottom: 1px solid #f6325c;
+    border-bottom: 1px solid var(--hl);
     margin-bottom: -1px;
 }
 .detail-titel {
