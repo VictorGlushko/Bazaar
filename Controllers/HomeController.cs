@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Bazaar.Domain.Entities;
 using Bazaar.Domain.ViewModel;
+using Bazaar.Dtos;
 using Bazaar.Repository;
 
 namespace Bazaar.Controllers
@@ -15,13 +17,17 @@ namespace Bazaar.Controllers
         private List<Game> _games;
         private List<Genre> _genres;
         private List<Game> _discountGames;
+        private List<SlideViewModel> _slides;
 
         public HomeController(IUnitOfWork unitOfWork)
         {
+
             _unitOfWork = unitOfWork;
             _games = _unitOfWork.Games.GetGames().ToList();
             _genres = _unitOfWork.Genres.GetGenres().ToList();
             _discountGames = _unitOfWork.Games.GetGames().Where(g => g.FinalPrice < 500).ToList();
+            _slides = _unitOfWork.CarouselSlides.GetCarouselSlides().Select(Mapper.Map<CarouselSlide,SlideViewModel>).ToList();
+
         }
 
         public ActionResult Index()
@@ -30,6 +36,7 @@ namespace Bazaar.Controllers
             gvm.Games = _games;
             gvm.Genres = _genres;
             gvm.DiscountGames = _discountGames;
+            gvm.Slides = _slides;
 
             return View(gvm);
         }

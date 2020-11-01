@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Bazaar.Domain.Entities.Game>
 
 
+<div class="hidden" data-itemcount="@Model.Count()"></div>
 @foreach (var item in Model)
 {
-    
     <a href=@Url.Action("Index","Game",new { slug = item.Slag }) class="item-link">
         <div class="product-card">
 
@@ -25,8 +25,16 @@
 
             </div>
             <div class="product-card-prace">
-                <div class="product-card-original-price "> <del>@item.OriginalPrice</del></div><div class="product-card-discount">- @(100 - (item.FinalPrice * 100 / item.OriginalPrice)) %</div>
-                <div class="product-card-final-price"> @item.FinalPrice <i class="fas fa-ruble-sign"></i></div>
+
+                <div class="product-card-discount">
+                    - @(100 - (item.FinalPrice * 100 / item.OriginalPrice)) %
+                </div>
+                
+                <div class="product-card-final-price">
+                    <del>@item.OriginalPrice</del>
+                    <div class="f-price">@item.FinalPrice &#8381</div>
+                </div>
+              
             </div>
             
             

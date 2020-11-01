@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="@Url.Action("Index","SlideManage")">
                     <i class="fas fa-sliders-h"></i> Слайдер
                 </a>
             </li>
@@ -71,6 +71,7 @@
 
 
     @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/ckeditor")
     @RenderSection("scripts", required: false)
 
 </body>

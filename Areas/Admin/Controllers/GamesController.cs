@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using Bazaar.Controllers.Api;
 using Bazaar.Domain;
 using Bazaar.Domain.Entities;
 using Bazaar.Domain.ViewModel;
@@ -180,6 +181,7 @@ namespace Bazaar.Areas.Admin.Controllers
 
             return new RedirectResult("~/Admin/Games");
         }
+
 
 
 

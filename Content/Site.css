@@ -9,10 +9,21 @@
     src: url("../fonts/RussoOne.ttf");
 }/* font-family: "Russo One", sans-serif; */
 
+
+ @font-face {
+    font-family: "Lato";
+    src: url("../fonts/LatoRegular.ttf");
+}/* font-family: "Lato", sans-serif; */
+
+
+
 :root {
-    --hl: #F6325C;
+    --hl:  #F6325C;
     --hl-blue: #0094E9;
     --hl-dark: #303031;
     --hl-card-dark: #343A40;
+    --hl-font-color: #F3f3f3;
+    --hl-font-color-dark: #989898;
+    --hl-orange: #ffb218;
 }
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using Bazaar.Areas.Admin.ViewModel;
 using Bazaar.Domain.Dtos;
 using Bazaar.Domain.Entities;
+using Bazaar.Domain.ViewModel;
 using Bazaar.Repository;
 
 namespace Bazaar.Controllers
@@ -19,6 +19,7 @@ namespace Bazaar.Controllers
         public FaqController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+
         }
 
         // GET: Faq

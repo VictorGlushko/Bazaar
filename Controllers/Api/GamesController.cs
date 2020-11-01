@@ -1,9 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using AutoMapper;
 using Bazaar.Domain.Entities;
 using Bazaar.Dtos;
@@ -73,7 +75,7 @@ namespace Bazaar.Controllers.Api
         }
 
         // POST /api/game
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public GameDto CreateGame(GameDto gameDto)
         {
             if(ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace Bazaar.Controllers.Api
         }
         
         //PUT /api/game/1
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public void UpdateGame(int id, Game game)
         {
 
@@ -115,7 +117,7 @@ namespace Bazaar.Controllers.Api
         }
 
         // DELETE /api/games/1
-        [HttpDelete]
+        [System.Web.Http.HttpDelete]
         public void DeleteGame(int id)
         {
             var game = _unitOfWork.Games.GetGame(id);
@@ -129,5 +131,7 @@ namespace Bazaar.Controllers.Api
         }
 
 
+
     }
+   
 }

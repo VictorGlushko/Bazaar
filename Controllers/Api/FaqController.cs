@@ -1,9 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 using AutoMapper;
 using Bazaar.Domain.Dtos;
 using Bazaar.Domain.Entities;
@@ -21,7 +23,7 @@ namespace Bazaar.Controllers.Api
         }
 
 
-        //GET /api/faqItems
+        //GET /api/faq
         public IEnumerable<FaqItemDto> GetFaqItems()
         {
             return _unitOfWork.FaqItem.GetFaqItems().Select(Mapper.Map<FaqItem,FaqItemDto>);
@@ -39,7 +41,7 @@ namespace Bazaar.Controllers.Api
         }
 
         //POST /api/FaqItems
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public IHttpActionResult CreateFaqItem(FaqItemDto itemDto)
         {
             if (!ModelState.IsValid)
@@ -55,7 +57,7 @@ namespace Bazaar.Controllers.Api
         }
 
         //PUT /api/FaqItems/
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public void UpdateFaqItem(int id, FaqItemDto item)
         {
             if(!ModelState.IsValid)
@@ -68,7 +70,7 @@ namespace Bazaar.Controllers.Api
         }
 
         //DELETE /api/FaqItems/1
-        [HttpDelete]
+        [System.Web.Http.HttpDelete]
         public void DeleteFaqItem(int id)
         {
             var faqItem = _unitOfWork.FaqItem.GetFaqItem(id);
@@ -81,5 +83,7 @@ namespace Bazaar.Controllers.Api
 
         }
 
+
     }
+
 }

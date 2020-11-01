@@ -1,0 +1,80 @@
+﻿@model Bazaar.Domain.ViewModel.SlideViewModel
+@{
+    ViewBag.Title = "SlideForm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (Model.Id == 0)
+{
+    <h2>Новый слайд</h2>
+}
+else
+{
+    <h2>Редактировать слайд</h2>
+}
+
+
+@using (@Html.BeginForm("Save", "SlideManage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(s => s.Order)
+        @Html.TextBoxFor(s => s.Order, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Order)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Title)
+        @Html.TextBoxFor(s => s.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Description)
+        @Html.TextBoxFor(s => s.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Description)
+    </div>
+
+
+    if (Model.Id != 0)
+    {
+        <div class="form-group">
+            @Html.LabelFor(s => s.ImgPath)
+            @Html.TextBoxFor(s => s.ImgPath, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.ImgPath)
+        </div>
+
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Price)
+        @Html.TextBoxFor(s => s.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Price)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Description)
+        @Html.TextBoxFor(s => s.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Description)
+    </div>
+
+
+    <input type="file" name="uploadImage" />
+
+    <div class="form-group">
+        @Html.LabelFor(s => s.Link)
+        @Html.TextBoxFor(s => s.Link, new { @class = "form-control" })
+        @Html.ValidationMessageFor(s => s.Link)
+    </div>
+
+
+    @Html.HiddenFor(s => s.Id);
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
+}

@@ -81,7 +81,11 @@ namespace Bazaar.Controllers
                 }break;
                     
             }
-            
+
+            var result = resultwe.ToList();
+
+          ViewData["count"] = result.Count();
+
             //foreach (var item in viewModel.Genres)
             //{
             //    var qgames =  games.Where(g => g.Genres.Select(q => q.Name).Contains(item));
@@ -89,10 +93,7 @@ namespace Bazaar.Controllers
             //    resultwe.AddRange(qgames.ToList());
 
             //}
-
-
-
-            return PartialView("../Home/_Items", resultwe.ToList());
+            return PartialView("../Home/_Items", result);
         }
     }
 }

@@ -99,14 +99,6 @@
                             </div>
 
                        
-                            
-                       
-                            
-                          
-
-
-
-                     
 
                         <div class="detail-titel">
                             <div class="title-underline-text">
@@ -203,7 +195,7 @@
     <div class="tab-content">
         <div id="about" class="container tab-pane active tabs-area"><br>
             <h3>Описание</h3>
-            <p>@Model.Description</p>
+            @Html.Raw(Model.Description)
         </div>
         <div id="menu1" class="container tab-pane fade"><br>
             <h3>Минимальные системные требования</h3>

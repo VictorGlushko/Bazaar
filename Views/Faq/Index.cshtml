@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bazaar.Areas.Admin.ViewModel.FaqItemViewModel>
+﻿@model IEnumerable<Bazaar.Domain.ViewModel.FaqItemViewModel>
 
 
 @{
@@ -7,6 +7,8 @@
 }
 
 <h2>Faq</h2>
+
+
 
 
 <section>
@@ -39,7 +41,7 @@
     <div class="faq-title">Популярные вопросы :</div>
     @Html.Partial("_FaqItem", Model)
 </div>
-   
+
 @section scripts
 {
 

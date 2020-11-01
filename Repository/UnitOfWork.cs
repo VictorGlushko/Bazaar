@@ -14,6 +14,7 @@ namespace Bazaar.Repository
         public IModeRepository Mode { get; set; }
         public IPlatformRepository Platform { get; }
         public IFaqItemRepository FaqItem { get; }
+        public ICarouselSlideRepository CarouselSlides { get; }
 
 
         public UnitOfWork(ApplicationDbContext context)
@@ -24,6 +25,7 @@ namespace Bazaar.Repository
             Mode = new ModeRepository(context);
             Platform = new PlatformRepository(context);
             FaqItem = new FaqItemRepository(context);
+            CarouselSlides = new CarouselSlideRepository(context);
         }
 
         public void Complete()

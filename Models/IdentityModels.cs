@@ -28,8 +28,10 @@ namespace Bazaar.Models
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<MediaResources> MediaResources { get; set; }
         public DbSet<SystemRequirements> SystemRequirements { get; set; }
-
         public DbSet<FaqItem> FaqItems { get; set; }
+
+        public DbSet<CarouselSlide> CarouselSlides { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -23,6 +23,9 @@ namespace Bazaar
                 "~/Scripts/jquery.validate*"
             ));
 
+            bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
+                "~/Scripts/ckeditor/ckeditor.js"
+            ));
 
 
 

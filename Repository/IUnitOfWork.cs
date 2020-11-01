@@ -14,6 +14,7 @@ namespace Bazaar.Repository
         IModeRepository Mode { get;  }
         IPlatformRepository Platform { get; }
         IFaqItemRepository FaqItem { get; }
+        ICarouselSlideRepository CarouselSlides { get; }
         void Complete();
 
     }

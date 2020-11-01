@@ -8,7 +8,9 @@
     {
         HttpMethod = "POST",
         InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "products-list"
+        UpdateTargetId = "products-list",
+        OnSuccess = "onsuccess"
+
     };
 
 }
@@ -34,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-8 col-xl-8">
                     <div class="order-panel">
-                        <div class="number-of-games">Найдено : <span class="">@Model.Games.Count()</span></div>
+                        <div class="number-of-games">Найдено : <span>@Model.Games.Count()</span></div>
 
                         <div class="order-text">Сортировать по :</div>
 
@@ -163,10 +165,10 @@
             values: [@Model.MinPrice, @Model.MaxPrice],
             range: true,
             animate: "fast",
-            slide : function(event, ui) {    
-                $(".polzunok-input-left").val(ui.values[ 0 ]);   
+            slide : function(event, ui) {
+                $(".polzunok-input-left").val(ui.values[ 0 ]);
                 $(".polzunok-input-right").val(ui.values[1]);
-               
+
             }    ,
             stop: function(event, ui) {
                 $('#context-form').submit();
@@ -174,7 +176,12 @@
         });
         $(".polzunok-input-left").val($(".polzunok").slider("values", 0));
         $(".polzunok-input-right").val($(".polzunok").slider("values", 1));
-     
+
+
+    function onsuccess(data) {
+        var itemCount = $(".total").data("itemcount");
+        $(".number-of-games span").html(itemCount);
+        }
     </script>
     
 

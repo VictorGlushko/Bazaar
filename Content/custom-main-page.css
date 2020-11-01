@@ -5,10 +5,6 @@ body {
     background: linear-gradient(270deg, rgba(47,47,47,1) 0%, rgba(72,73,98,1) 51%, rgba(37,37,37,1) 100%);
 }
 
-.tmp {
-    padding: 20px;
-    background: #337ab7;
-}
 
 
 
@@ -43,7 +39,6 @@ body {
     margin: 0 auto;
     margin-top: 50px;
     position: relative;
-    background: #337ab7;
 }
 
 .left-column{
@@ -68,12 +63,12 @@ body {
     margin: 15px 0px;
     transition: 0.25s;
     display: flex;
-    align-items: center;
-    font-family: 'Russo One', sans-serif;
+    
+    font-family: "Lato", sans-serif;
 }
     .product-card:hover {
         text-decoration: none;
-        box-shadow: 0 0 10px rgba(246,50,92,0.9);
+        box-shadow: 0 0 10px var(--hl-blue);
     }
 
 .product-card-img{
@@ -86,17 +81,11 @@ body {
 
 
 .product-card-content {
+    font-family: "Russo One", sans-serif;
     padding: 10px;
     flex-grow: 1;
 }
 
-.product-card-prace {
-    padding: 10px;
-    margin-left: auto;
-    margin-top: 5px;
-    margin-right: 5px;
-    min-width: 125px;
-}
 .product-card-ganre {
     display: flex;
     align-items: flex-end;
@@ -105,33 +94,35 @@ body {
     font-size: 12px;
 }
 
-.product-card-original-price {
-    text-align: center;
-    display: inline-block;
-    padding: 0 5px;
-    border: 1px solid #343A40;
+.product-card-prace {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-right: 10px;
+  
 }
 
-
 .product-card-discount {
-    background: #F6325C;
-    border: 1px solid #343A40;
-    text-align: right;
-    display: inline-block;
-    padding: 0 5px;
+    padding: 2px 4px;
+    font-size: 14px;
+    border-radius: 2px;
+    background: var(--hl);
 }
 
 .product-card-final-price {
-    border: 1px solid #343A40;
-    padding: 0 5px;
-    margin-top: 7px;
-    text-align: right;
-    font-size: 20px;
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
+
+
 
 del {
     position: relative;
     text-decoration: none;
+    font-size: 13px;
+    line-height: normal;
 }
 
     del:before {
@@ -142,9 +133,13 @@ del {
         position: absolute;
         top: 50%;
         left: 0;
-        transform: rotate(-20deg);
+        
     }
 
+
+.f-price {
+    font-size: 19px;
+}
 .tabs-area {
     width: 100%;
     display: flex;
@@ -172,25 +167,25 @@ del {
 
 .tabs-area a:hover {
     text-decoration: none;
-    color: #F6325C;
+    color: var(--hl);
 }
 
 .line{
     margin-top: 3px;
     width: 100%;
     height: 1px;
-    background: #F6325C;
+    background: var(--hl);
 }
 
 .current{
-    color: #F6325C !important;
+    color: var(--hl) !important;
 }
 
 a:hover {
     text-decoration: none;
 }
 .ganres {
-    color: #f6325c;
+    color: var(--hl);
     font-size: 20px;
     margin: 10px 0px;
 }
@@ -255,6 +250,10 @@ a:hover {
     .product-card {
         height: 80px;
         font-size: 14px;
+    }
+
+    del {
+        display: none;
     }
 
     .product-card-ganre {

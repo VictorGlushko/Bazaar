@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Bazaar.Domain.ViewModel.SlideViewModel>
+
+
+<div id="carouselExampleIndicators" class="carousel slide effect7" data-ride="carousel">
+    <div class="carousel-inner">
+        
+        @foreach (var item in Model)
+        {
+            var active = item.Order == 1 ? "active" : "";
+
+
+
+                <div class="carousel-item @active">
+                    <div class="row m-0">
+                        <div class="col-md-8 m-0 p-0">
+                            <a href="@item.Link">
+                                <img class="d-block w-100" src="@item.ImgPath" alt="Second slide">
+                            </a>
+                            <div class="description-block">
+
+                                <div class="title-wrapper">
+                                    <div class="slide-title">@item.Title</div>
+                                    <a href="" class="slide-button">В корзину</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="@item.Link" class="col-md-4 slide-content">
+                            <div class="content-titel">
+                                <div class="title-underline">@item.Title</div>
+                            </div>
+                            <div class="content-description">@item.Description</div>
+
+                            <div class="content-ganre"></div>
+                            <div class="content-patforms"></div>
+                        </a>
+                    </div>
+                </div>
+        }
+
+        
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+
+</div>
+

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
-using Bazaar.Areas.Admin.ViewModel;
+using Bazaar.Domain.Dto;
 using Bazaar.Domain.Dtos;
 using Bazaar.Domain.Entities;
+using Bazaar.Domain.ViewModel;
 using Bazaar.Dtos;
 
 namespace Bazaar.App_Start
@@ -21,6 +22,10 @@ namespace Bazaar.App_Start
             Mapper.CreateMap<FaqItemDto, FaqItem>();
             Mapper.CreateMap<FaqItemViewModel, FaqItem>();
             Mapper.CreateMap<FaqItem, FaqItemViewModel>();
+            Mapper.CreateMap<CarouselSlide, CarouselSlideDto>();
+            Mapper.CreateMap<CarouselSlideDto, CarouselSlide>();
+            Mapper.CreateMap<CarouselSlide, SlideViewModel>();
+            Mapper.CreateMap<SlideViewModel, CarouselSlide>();
         }
     }
 }

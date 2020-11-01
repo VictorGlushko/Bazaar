@@ -5,6 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor }
+    )
+@Html.DevExpress().GetScripts( 
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new Script { ExtensionSuite = ExtensionSuite.Editors },
+    new Script { ExtensionSuite = ExtensionSuite.HtmlEditor }
+    )
+
 <div class="header-block">
     <div class="jumbotron">
         <h1>Новый товар</h1>
@@ -45,6 +57,7 @@
     </div>
 
 
+
     <div class="row">
         <div class="col">
 
@@ -82,7 +95,7 @@
                 @Html.ValidationMessageFor(m => m.Language)
             </div>
 
-           
+
 
             <div class="form-group">
                 <label for="date-input">Дата релиза</label>
@@ -237,8 +250,8 @@
     </div>
 
     <div class="row justify-content-center">
-        <h1>Системные требования:</h1> 
-       
+        <h1>Системные требования:</h1>
+
     </div>
 
     <div class="row">
@@ -247,31 +260,31 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SystemRequirements.OperatingSystem)
-                @Html.TextBoxFor(m => m.SystemRequirements.OperatingSystem, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.SystemRequirements.OperatingSystem, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SystemRequirements.OperatingSystem)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SystemRequirements.Processor)
-                @Html.TextBoxFor(m => m.SystemRequirements.Processor, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.SystemRequirements.Processor, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SystemRequirements.Processor)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SystemRequirements.RAM)
-                @Html.TextBoxFor(m => m.SystemRequirements.RAM, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.SystemRequirements.RAM, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SystemRequirements.RAM)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SystemRequirements.VideoCard)
-                @Html.TextBoxFor(m => m.SystemRequirements.VideoCard, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.SystemRequirements.VideoCard, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SystemRequirements.VideoCard)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SystemRequirements.HDD)
-                @Html.TextBoxFor(m => m.SystemRequirements.HDD, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.SystemRequirements.HDD, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.SystemRequirements.HDD)
             </div>
 
@@ -299,6 +312,8 @@
 {
     <script>
         $(document).ready(function () {
+
+            var editor = CKEDITOR.replace("Description");
 
             $('#datepicker').datepicker({
                 uiLibrary: 'bootstrap4'

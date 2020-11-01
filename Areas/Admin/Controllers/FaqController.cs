@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using Bazaar.Areas.Admin.ViewModel;
 using Bazaar.Domain.Entities;
+using Bazaar.Domain.ViewModel;
 using Bazaar.Repository;
 
 namespace Bazaar.Areas.Admin.Controllers
