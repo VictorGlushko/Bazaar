@@ -19,7 +19,8 @@ namespace Bazaar.Controllers
         // GET: Cart
         public ActionResult Index()
         {
-            return View();
+
+            return View(GetCart());
         }
 
         public string AddToCart(int id)

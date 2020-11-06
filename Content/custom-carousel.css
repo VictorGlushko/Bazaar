@@ -104,7 +104,6 @@
 .title-underline {
     position: relative;
     padding: 15px;
-    line-height: 12px;
     border-bottom: 1px solid var(--hl);
     margin-bottom: -1px;
     display: inline-block;

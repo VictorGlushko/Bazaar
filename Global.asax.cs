@@ -1,9 +1,11 @@
+using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
 using Bazaar.App_Start;
+using Bazaar.Models;
 
 namespace Bazaar
 {

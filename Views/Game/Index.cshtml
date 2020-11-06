@@ -12,37 +12,17 @@
     };
 }
 
-
-
-
-
-<section class="content">
-
-   
-
-</section>
-
-
 <div class="container product-detail">
     
- 
-
-
-
 
     <div class="product-title">
         @Model.Name
     </div>
-
-
+    
     <div class="row">
-
-
-        <div class="col-md-12 col-lg-7">
-
-
+        <div class="col-lg-8">
             <div id="thumbGallery"
-                 class="thumbGallery"
+                 class="thumbGallery "
                  data-thumbGallery="true"
                  data-nav_effect="slide_horizontal"
                  data-nav_delay="1"
@@ -50,183 +30,190 @@
                  data-nav_delay_inverse="1"
                  data-nav_pagination="6"
                  data-gallery_effect="slide_horizontal"
-                 data-gallery_fullscreen_w="70%"
-                 data-gallery_fullscreen_h="70%"
+                 data-gallery_fullscreen_w="100%"
+                 data-gallery_fullscreen_h="100%"
                  data-gallery_timing="1000"
                  data-full_inline="true"
-                 data-full_inline_height="400"
+                 data-full_inline_height="380"
                  data-gallery_cover="true"
                  data-thumb_ratio=4/3
                  data-thumb_fit=false>
-
                 @{
                     foreach (var img in Model.GalleryImages)
                     {
-                        <img src="../Content/img/gallery/@Model.Slug/LR/@img" data-highres="../Content/img/gallery/@Model.Slug/HR/@img" data-caption=""/>
+                        <img src="../Content/img/gallery/@Model.Slug/LR/@img" data-highres="../Content/img/gallery/@Model.Slug/HR/@img" data-caption="" />
                     }
 
                 }
             </div>
-
-            <!--
-            <iframe width="100%" height="100%" src="@Model.MediaResources.VideoLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-            -->
         </div>
-        <div class="col-md-12 col-lg-5">
-            <div class="product-specification">
-                <div class="inner-content">
+        <div class="col-lg-4">
+            <div class="product-ticket effect7">
 
-                    <div class="description">
+                <img class="w-100" src="@Model.MediaResources.MainImagePath" alt="" />
+                <div class="ticket-inner-content">
 
-                        
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-12 d-flex justify-content-between">
-                                    <div class="discount align-self-center">
-                                        - @(100 - (Model.FinalPrice * 100 / Model.OriginalPrice)) %
-                                    </div>
-                                    <div class=" fin-price align-self-center"> @Model.FinalPrice 
-                                        <i class="fas fa-ruble-sign"></i>
-                                    </div>
 
-                                </div>
-                                <div class="col-xl-6 col-lg-12">
-                                    <div class="">
-                                        @Ajax.RouteLink("В корзину", new { controller = "Cart", action = "AddToCart", id = Model.Id }, ajaxOptions, new { @class = "buy-button" })
-                                    </div>
 
-                                </div>
-                            </div>
+                    <div class="ticket-title">@Model.Name</div>
+                    <div class="ticket-price"><i class="fas fa-ruble-sign"></i> @Model.FinalPrice </div>
 
-                       
 
-                        <div class="detail-titel">
-                            <div class="title-underline-text">
-                                Детали игры
-                            </div>
+                    <div class="detail-titel">
+                        <div class="title-underline-text">
+                            Детали игры
                         </div>
+                    </div>
 
+                    <div class="ticket-detail-item">
 
-                        <div class="detail-item">
-                            <div class="row p-2">
-
-                                <div class="col-xl-5 col-lg-12 p-0">
-                                    Жанр :
-                                </div>
-                                <div class="col-xl-7 col-lg-12 p-0">
-                                    @{foreach (var ganre in Model.Genres)
-                                      {<a href="#">@ganre.Name </a>}
-                                    }
-                                </div>
-                            </div>
-
+                        <div class="key">
+                            Жанр :
                         </div>
-                        <div class="detail-item">
-                            <div class="row p-2">
-                                <div class="col-xl-5 col-lg-12 p-0">
-                                    Издатель:
-                                </div>
-                                <div class="col-xl-7 col-lg-12 p-0">
-                                    @Model.Publisher
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-
-                            <div class="row p-2">
-                                <div class="col-xl-5 col-lg-12 p-0">
-                                    Разработчик:
-                                </div>
-                                <div class="col-xl-7 col-lg-12 p-0">
-                                    @Model.Developer
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="row p-2">
-                                <div class="col-xl-5 col-lg-12 p-0">
-                                    Дата выхода:
-                                </div>
-                                <div class="col-xl-7 col-lg-12 p-0">
-                                    @Model.ReleaseDate.ToString("D")
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="row p-2">
-                                <div class="col-xl-5 col-lg-12 p-0">
-                                    Наличие:
-                                </div>
-                                <div class="col-xl-7 col-lg-12 p-0">
-                                    много
-                                </div>
-                            </div>
-
+                        <div class="value">
+                            @{foreach (var ganre in Model.Genres)
+                                {<a href="#">@ganre.Name </a>}
+                            }
                         </div>
 
                     </div>
+
+                    <div class="ticket-detail-item">
+
+                        <div class="key">
+                            Издатель :
+                        </div>
+                        <div class="value">
+                            @Model.Publisher
+                        </div>
+
+                    </div>
+
+                    <div class="ticket-detail-item">
+
+                        <div class="key">
+                            Разработчик :
+                        </div>
+                        <div class="value">
+                            @Model.Developer
+                        </div>
+
+                    </div>
+
+                    <div class="ticket-detail-item">
+
+                        <div class="key">
+                            Дата выхода :
+                        </div>
+                        <div class="value">
+                            @Model.ReleaseDate.ToString("D")
+                        </div>
+
+
+                    </div>
+
+                    <div class="ticket-detail-item">
+
+                        <div class="key">
+                            Наличие :
+                        </div>
+                        <div class="value">
+                            много
+                        </div>
+
+
+                    </div>
+
+
+                    @Ajax.RouteLink("В корзину", new { controller = "Cart", action = "AddToCart", id = Model.Id }, ajaxOptions, new { @class = "ticket-buy-button" })
+
+
+
                 </div>
+
 
 
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <ul class="col nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#about">Описание</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Системные требования</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Активация</a>
-            </li>
-        </ul>
-    </div>
+  
 
 </div>
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div id="about" class="container tab-pane active tabs-area"><br>
-            <h3>Описание</h3>
-            @Html.Raw(Model.Description)
-        </div>
-        <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Минимальные системные требования</h3>
+<!-- Tab panes -->
 
-                <div class="row sys-req-item">
-                    <div class="col-md-4">ОС:</div>
-                    <div class="col-md-8">@Model.SystemRequirements.OperatingSystem</div>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-8">  
+            <div class="row">
+                <ul class="col nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#about">Описание</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu1">Системные требования</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu2">Активация</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+    
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="tab-content">
+                <div id="about" class="tab-pane active tabs-area effect7 "><br>
+                    @Html.Raw(Model.Description)
                 </div>
-                <div class="row sys-req-item">
-                    <div class="col-md-4">Процессор:</div>
-                    <div class="col-md-8">@Model.SystemRequirements.Processor</div>
+                <div id="menu1" class="container tab-pane fade"><br>
+                    <h3>Минимальные системные требования</h3>
+
+                    <div class="row sys-req-item">
+                        <div class="col-md-4">ОС:</div>
+                        <div class="col-md-8">@Model.SystemRequirements.OperatingSystem</div>
+                    </div>
+                    <div class="row sys-req-item">
+                        <div class="col-md-4">Процессор:</div>
+                        <div class="col-md-8">@Model.SystemRequirements.Processor</div>
+                    </div>
+                    <div class="row sys-req-item">
+                        <div class="col-md-4">Оперативная память:</div>
+                        <div class="col-md-8">@Model.SystemRequirements.RAM</div>
+                    </div>
+                    <div class="row sys-req-item">
+                        <div class="col-md-4">Видеокарта:</div>
+                        <div class="col-md-8">@Model.SystemRequirements.VideoCard</div>
+                    </div>
+                    <div class="row sys-req-item">
+                        <div class="col-md-4">Жесткий диск:</div>
+                        <div class="col-md-8">@Model.SystemRequirements.HDD</div>
+                    </div>
+
                 </div>
-                <div class="row sys-req-item">
-                    <div class="col-md-4">Оперативная память:</div>
-                    <div class="col-md-8">@Model.SystemRequirements.RAM</div>
+                <div id="menu2" class="container tab-pane fade"><br>
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                 </div>
-                <div class="row sys-req-item">
-                    <div class="col-md-4">Видеокарта:</div>
-                    <div class="col-md-8">@Model.SystemRequirements.VideoCard</div>
-                </div>
-                <div class="row sys-req-item">
-                    <div class="col-md-4">Жесткий диск:</div>
-                    <div class="col-md-8">@Model.SystemRequirements.HDD</div>
-                </div>
+            </div>
 
         </div>
-        <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <div class="col-lg-4">
+            <div class="add-info-block effect7"></div>
+            <div class="similar-games-block"></div>
         </div>
     </div>
+</div>
+
+
 
 
 

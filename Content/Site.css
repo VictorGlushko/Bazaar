@@ -18,12 +18,50 @@
 
 
 :root {
-    --hl:  #F6325C;
+    --hl: /*#c32865*/ #F6325C;
+    --hl-2: #c32865;
     --hl-blue: #0094E9;
     --hl-dark: #303031;
     --hl-card-dark: #343A40;
     --hl-font-color: #F3f3f3;
     --hl-font-color-dark: #989898;
     --hl-orange: #ffb218;
+    --hl-purple: #6649b8;
 }
 
+::-webkit-scrollbar {
+    width: 0.15rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #303031;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--hl);
+}
+
+.bread {
+    font-family: "Russo One";
+    color: var(--hl-font-color)
+}
+
+.bread span {
+    margin: 10px;
+    font-size: 20px;
+    color: var(--hl)
+}
+
+.bread a {
+    color: var(--hl-font-color);
+    transition: .3s;
+
+}
+.bread a:hover {
+    color: var(--hl-font-color-dark)
+}
+
+
+.active-color {
+    color: var(--hl-font-color-dark) !important;
+}

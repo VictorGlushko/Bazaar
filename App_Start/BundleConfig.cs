@@ -50,7 +50,8 @@ namespace Bazaar
                       "~/Content/jquery.mb.gallery.min.css",
                       "~/Content/custom-cart.css",
                       "~/Content/custom-faq.css",
-                      "~/Content/custom-catalog.css"));
+                      "~/Content/custom-catalog.css",
+                      "~/Content/custom-personal-area.css"));
 
 
             bundles.Add(new ScriptBundle("~/Content/admin-css").Include(

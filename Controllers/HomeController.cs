@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,7 +8,10 @@ using AutoMapper;
 using Bazaar.Domain.Entities;
 using Bazaar.Domain.ViewModel;
 using Bazaar.Dtos;
+using Bazaar.Models;
 using Bazaar.Repository;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Bazaar.Controllers
 {
@@ -27,9 +31,9 @@ namespace Bazaar.Controllers
             _genres = _unitOfWork.Genres.GetGenres().ToList();
             _discountGames = _unitOfWork.Games.GetGames().Where(g => g.FinalPrice < 500).ToList();
             _slides = _unitOfWork.CarouselSlides.GetCarouselSlides().Select(Mapper.Map<CarouselSlide,SlideViewModel>).ToList();
-
         }
 
+      
         public ActionResult Index()
         {
             GamesViewModel gvm = new GamesViewModel();

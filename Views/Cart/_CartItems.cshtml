@@ -16,7 +16,7 @@
         }
 
         <div class="total-price">Итого: @Model.ComputeTotalValue() руб</div>
-        <a href="#" class="cart-btn">Перейти в карзину</a>
+        <a href="@Url.Action("Index","Cart")" class="cart-btn">Перейти в карзину</a>
     }
     else
     {

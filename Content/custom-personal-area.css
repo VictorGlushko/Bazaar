@@ -1,0 +1,144 @@
+﻿.personal-area-header {
+    font-family: "Russo One", sans-serif;
+    font-size: 40px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    color: var(--hl-font-color-dark);
+}
+
+.content-personal-area {
+    background: var(--hl-dark);
+    color: var(--hl-font-color);
+}
+
+    .content-personal-area label {
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.05em;
+    }
+    .content-personal-area .text-danger {
+        color: var(--hl-2) !important;
+    }
+    .content-personal-area h2 {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0 20px;
+        text-align: center;
+    }
+
+
+    .content-personal-area
+    input[type='text'],
+    input[type='password'] {
+        display: inline-block;
+        width: 100%;
+        font-size: 1.6rem;
+        color: var(--hl-font-color);
+        background: #2f2f2f;
+        border: 1px solid white;
+        padding: 0.5rem 2rem 0.5rem;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        border-radius: 0;
+        outline: none;
+        transition: all .30s;
+    }
+
+    .content-personal-area
+    input[type='text']:focus,
+    input[type='password']:focus
+    {
+
+        border-color: #c32865;
+        background: #2f2f2f;
+    }
+
+.content-personal-area .form-group {
+    margin: 30px 0;
+}
+
+.content-personal-area button {
+    color: white;
+    letter-spacing: 0.025em;
+    font-size: 1.2rem;
+    display: inline-block;
+    position: relative;
+    border-radius: 0px;
+    padding: .9em;
+    width: 250px;
+    background: var(--hl-2);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out !important;
+    font-family: "Russo One", sans-serif;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+    .content-personal-area button:before {
+        content: '';
+        width: 2em;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: translateX(-4em) skewX(-45deg);
+    }
+
+    .content-personal-area button:hover:before {
+        animation: move-ligh 0.5s;
+    }
+
+
+.btn-registor {
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    letter-spacing: 0.025em;
+    font-size: 1.2rem;
+    display: inline-block;
+    position: relative;
+    width: 250px;
+    border-radius: 0px;
+    padding: 0.9em;
+    background: var(--hl-blue);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out !important;
+    font-family: "Russo One", sans-serif;
+    overflow: hidden;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-registor:before {
+        content: '';
+        width: 2em;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: translateX(-4em) skewX(-45deg);
+    }
+
+    .btn-registor:hover:before {
+        animation: move-ligh 0.5s;
+    }
+    .btn-registor:hover {
+        color: var(--hl-font-color);
+    }
+
+    .m-t-b-20 {
+        margin-top: 20px;
+        background: #c32865;
+        margin-bottom: 20px;
+    }
+
+
+    @keyframes move-ligh {
+        from {
+            transform: translateX(-4em) skewX(-45deg);
+        }
+        to {
+            transform: translateX(14em) skewX(-45deg);
+        }
+    }
